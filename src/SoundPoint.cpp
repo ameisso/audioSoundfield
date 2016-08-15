@@ -56,6 +56,7 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance,string aSoundPath)
     soundPath = aSoundPath;
     soundPlayer.load(soundPath);
     soundPlayer.setLoop(true);
+    soundPlayer.setVolume(0);
     soundPlayer.play();
 }
 
