@@ -51,7 +51,7 @@ private:
 class AmbiantSoundPoint : public SoundPoint
 {
 public:
-    void setup(string aSoundPath);
+    void setup(string aSoundPath, float volume);
     void draw();
 };
 

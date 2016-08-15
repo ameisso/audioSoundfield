@@ -121,9 +121,10 @@ void SoundPoint::draw()
 
 
 //AMBIANT SOUND POINT
-void AmbiantSoundPoint::setup(string aSoundPath)
+void AmbiantSoundPoint::setup(string aSoundPath, float volume)
 {
     SoundPoint::setup(0, 0, 100, aSoundPath);
+    setVolume(volume);
 }
 
 void AmbiantSoundPoint::draw()

@@ -18,3 +18,9 @@
         <fileName>vocal.wav</fileName>
     </soundPoint>
 </soundPoints>
+<ambiantSounds>
+    <ambiantSound>
+            <fileName>rain.wav</fileName>
+            <volume>0.1</volume>
+    </ambiantSound>
+</ambiantSounds>

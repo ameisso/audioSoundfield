@@ -5,7 +5,6 @@ void ofApp::setup()
     ofSetFrameRate(30);
     ofSetCircleResolution(100);
     
-    ambiantPoint.setup("rain.wav");
     listener.setup(350, 500, 0);
     loadSettings();
 }
@@ -13,6 +12,8 @@ void ofApp::setup()
 void ofApp::loadSettings()
 {
     soundPoints.clear();
+    ambiantPoints.clear();
+    
     if(settings.loadFile("settings.xml"))
     {
         settings.pushTag("soundPoints");
@@ -26,7 +27,17 @@ void ofApp::loadSettings()
             soundPoints.push_back(p);
             settings.popTag();
         }
+        settings.popTag();
         
+        settings.pushTag("ambiantSounds");
+        for(int i = 0; i < settings.getNumTags("ambiantSound"); i++)
+        {
+            settings.pushTag("ambiantSound", i);
+            AmbiantSoundPoint a;
+            a.setup(settings.getValue("fileName", ""),settings.getValue("volume", 1.0));
+            ambiantPoints.push_back(a);
+            settings.popTag();
+        }
         settings.popTag();
     }
     else
@@ -41,7 +52,6 @@ void ofApp::update()
     {
         (it)->update(listener);
     }
-    ambiantPoint.setVolume(0.3);
 }
 
 void ofApp::draw()
