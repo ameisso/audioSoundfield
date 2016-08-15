@@ -1,0 +1,20 @@
+<soundPoints>
+    <soundPoint>
+        <posX>100</posX>
+        <posY>100</posY>
+        <maxDistance>600</maxDistance>
+        <fileName>bass.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>600</posX>
+        <posY>100</posY>
+        <maxDistance>100</maxDistance>
+        <fileName>bells.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>600</posX>
+        <posY>600</posY>
+        <maxDistance>100</maxDistance>
+        <fileName>vocal.wav</fileName>
+    </soundPoint>
+</soundPoints>
