@@ -39,6 +39,10 @@ void ofApp::loadSettings()
             settings.popTag();
         }
         settings.popTag();
+        
+        settings.pushTag("OSC");
+        oscReceiver.setup(settings.getValue("listenPort", 8000));
+        settings.popTag();
     }
     else
     {
@@ -48,6 +52,7 @@ void ofApp::loadSettings()
 
 void ofApp::update()
 {
+    handleOSC();
     for(vector<SoundPoint>::iterator it = soundPoints.begin(); it != soundPoints.end(); ++it)
     {
         (it)->update(listener);
@@ -65,25 +70,113 @@ void ofApp::draw()
     listener.draw();
 }
 
+
+void ofApp::handleOSC()
+{
+    while(oscReceiver.hasWaitingMessages())
+    {
+        ofxOscMessage m;
+        oscReceiver.getNextMessage(m);
+        
+        // check for mouse moved message
+        if(m.getAddress() == "/ping")
+        {
+            ofLog() << "ping";
+        }
+        else if(m.getAddress() == "/listener/position")
+        {
+            if (m.getNumArgs() == 2)
+            {
+                if (m.getArgType(0) == OFXOSC_TYPE_INT32 && m.getArgType(1) == OFXOSC_TYPE_INT32)
+                {
+                    listener.position = ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1));
+                }
+                else if ((m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT))
+                {
+                    listener.position = ofVec2f(m.getArgAsFloat(0)*ofGetWidth(), (1-m.getArgAsFloat(1))*ofGetHeight());
+                }
+            }
+        }
+        else if(m.getAddress() == "/listener/speed")
+        {
+            if (m.getNumArgs() == 2)
+            {
+                if (m.getArgType(0) == OFXOSC_TYPE_INT32 && m.getArgType(1) == OFXOSC_TYPE_INT32)
+                {
+                    listener.update(ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1)));
+                }
+                else if ((m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT))
+                {
+                    listener.update(ofVec2f(m.getArgAsFloat(0), m.getArgAsFloat(1)*-1));
+                }
+            }
+        }
+        else if(m.getAddress() == "/listener/orientation")
+        {
+            if (m.getNumArgs() == 1)
+            {
+                if (m.getArgType(0) == OFXOSC_TYPE_FLOAT)
+                {
+                    
+                    listener.orientation = ofMap(m.getArgAsFloat(0),0,1,-180,180);
+                }
+            }
+        }
+        else
+        {
+            // unrecognized message: display on the bottom of the screen
+            string msg_string;
+            msg_string += "UNEXPECTED MESSAGE: ";
+            msg_string += m.getAddress();
+            msg_string += ": ";
+            for(int i = 0; i < m.getNumArgs(); i++)
+            {
+                // get the argument type
+                msg_string += m.getArgTypeName(i);
+                msg_string += ":";
+                // display the argument - make sure we get the right type
+                if(m.getArgType(i) == OFXOSC_TYPE_INT32)
+                {
+                    msg_string += ofToString(m.getArgAsInt32(i));
+                }
+                else if(m.getArgType(i) == OFXOSC_TYPE_FLOAT)
+                {
+                    msg_string += ofToString(m.getArgAsFloat(i));
+                }
+                else if(m.getArgType(i) == OFXOSC_TYPE_STRING)
+                {
+                    msg_string += m.getArgAsString(i);
+                }
+                else
+                {
+                    msg_string += "unknown";
+                }
+            }
+            // add to the list of strings to display
+            ofLog() << msg_string;
+        }
+    }
+}
+
 void ofApp::keyPressed(int key)
 {
     ofVec2f direction(0,0);
-        if(key == OF_KEY_DOWN)
-        {
-            direction = ofVec2f(0,1);
-        }
-        else  if(key == OF_KEY_UP)
-        {
-            direction = ofVec2f(0,-1);
-        }
-        else  if(key == OF_KEY_LEFT)
-        {
-            direction = ofVec2f(-1,0);
-        }
-        else  if(key == OF_KEY_RIGHT)
-        {
-            direction = ofVec2f(1,0);
-        }
+    if(key == OF_KEY_DOWN)
+    {
+        direction = ofVec2f(0,1);
+    }
+    else  if(key == OF_KEY_UP)
+    {
+        direction = ofVec2f(0,-1);
+    }
+    else  if(key == OF_KEY_LEFT)
+    {
+        direction = ofVec2f(-1,0);
+    }
+    else  if(key == OF_KEY_RIGHT)
+    {
+        direction = ofVec2f(1,0);
+    }
     listener.update(direction);
     
     if(key =='r')
@@ -111,5 +204,5 @@ void ofApp::mouseDragged(int x, int y , int button)
 
 void ofApp::mouseMoved(int x, int y)
 {
-
+    
 }

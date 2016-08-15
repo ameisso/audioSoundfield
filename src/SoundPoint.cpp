@@ -111,8 +111,12 @@ void SoundPoint::draw()
     ofDrawCircle(position.x,position.y,maxDistance);
     
     ofDrawBitmapString(soundPath, position.x-getBitmapStringBoundingBox(soundPath).getWidth()/2, position.y-20);
-    ofDrawBitmapString(int(soundPlayer.getVolume()*100), position.x, position.y+20);
-    ofDrawBitmapString(int(soundPlayer.getPan()*100), position.x, position.y+30);
+    
+    string volumeString("vol : "+ofToString(int(soundPlayer.getVolume()*100)));
+    ofDrawBitmapString(volumeString, position.x-getBitmapStringBoundingBox(volumeString).getWidth()/2, position.y+20);
+    
+    string panString("pan : "+ofToString(int(soundPlayer.getPan()*100)));
+    ofDrawBitmapString(panString, position.x-getBitmapStringBoundingBox(panString).getWidth()/2, position.y+30);
 }
 
 

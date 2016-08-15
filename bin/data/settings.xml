@@ -13,14 +13,17 @@
     </soundPoint>
     <soundPoint>
         <posX>600</posX>
-        <posY>600</posY>
+        <posY>400</posY>
         <maxDistance>100</maxDistance>
         <fileName>vocal.wav</fileName>
     </soundPoint>
 </soundPoints>
 <ambiantSounds>
     <ambiantSound>
-            <fileName>rain.wav</fileName>
-            <volume>0.1</volume>
+        <fileName>rain.wav</fileName>
+        <volume>0.1</volume>
     </ambiantSound>
 </ambiantSounds>
+<OSC>
+    <inputPort>8000</inputPort>
+</OSC>

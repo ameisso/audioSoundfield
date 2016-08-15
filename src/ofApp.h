@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "SoundPoint.h"
 #include "ofxXmlSettings.h"
+#include "ofxOSC.h"
 
 class ofApp : public ofBaseApp{
 
@@ -11,6 +12,7 @@ class ofApp : public ofBaseApp{
         void loadSettings();
 		void update();
 		void draw();
+    void handleOSC();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -20,6 +22,7 @@ class ofApp : public ofBaseApp{
     
     SoundListener listener;
     ofxXmlSettings settings;
+    ofxOscReceiver oscReceiver;
     
     vector<SoundPoint> soundPoints;
     vector<AmbiantSoundPoint> ambiantPoints;
