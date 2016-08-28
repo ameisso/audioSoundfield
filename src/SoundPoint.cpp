@@ -49,51 +49,69 @@ ofRectangle SoundObject::getBitmapStringBoundingBox(string text)
 //SOUND POINT
 
 
-void SoundPoint::setup(int posX, int posY, int aMaxDistance,string aSoundPath)
+void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath)
 {
     SoundObject::setup(posX, posY);
     maxDistance = aMaxDistance;
+    loopRate = aLoopRate;
     soundPath = aSoundPath;
     soundPlayer.load(soundPath);
-    soundPlayer.setLoop(true);
+    soundPlayer.setLoop(false);
     soundPlayer.setVolume(0);
-    soundPlayer.play();
+    startPlaying();
 }
 
 void SoundPoint::update(SoundListener listener)
 {
-    float distance =  position.distance( listener.position );
-    float volume = ofMap(distance, maxDistance, 0, 0, 1);
-    soundPlayer.setVolume(volume);
-    
-    ofVec2f directionVector(0,-1);
-    directionVector.rotate(listener.orientation);
-    ofVec2f sourceVector = ofVec2f(position.x-listener.position.x,position.y-listener.position.y);
-    float listenerAngle = directionVector.angle(sourceVector);
-    float pan;
-    if( listenerAngle > 0)//RIGHT
+    if( soundPlayer.isPlaying() )
     {
-        if (listenerAngle <= 90) //BOTTOM
+        float distance =  position.distance( listener.position );
+        float volume = ofMap(distance, maxDistance, 0, 0, 1);
+        soundPlayer.setVolume(volume);
+        
+        ofVec2f directionVector(0,-1);
+        directionVector.rotate(listener.orientation);
+        ofVec2f sourceVector = ofVec2f(position.x-listener.position.x,position.y-listener.position.y);
+        float listenerAngle = directionVector.angle(sourceVector);
+        float pan;
+        if( listenerAngle > 0)//RIGHT
         {
-            pan = ofMap(listenerAngle, 0, 90, 0, 1);
+            if (listenerAngle <= 90) //BOTTOM
+            {
+                pan = ofMap(listenerAngle, 0, 90, 0, 1);
+            }
+            else
+            {
+                pan = ofMap(listenerAngle, 90, 180, 1, 0);
+            }
         }
-        else
+        else //LEFT
         {
-            pan = ofMap(listenerAngle, 90, 180, 1, 0);
+            if (abs(listenerAngle) <= 90) //BOTTOM
+            {
+                pan = ofMap(listenerAngle, 0, -90, 0, -1);
+            }
+            else
+            {
+                pan = ofMap(listenerAngle, -90, -180, -1, 0);
+            }
+        }
+        soundPlayer.setPan(pan);
+    }
+    else
+    {
+        if( isPlaying )
+        {
+            isPlaying = false;
+            float duration = ofGetElapsedTimeMillis() - lastPlayStartTime;
+            loopOffset = ofRandom(duration*0.1); // 10% of global time.
+            lastPlayEndTime = ofGetElapsedTimeMillis();
+        }
+        if( ofGetElapsedTimeMillis()-lastPlayEndTime > loopRate * 1000.0 + loopOffset && !isPlaying )
+        {
+            startPlaying();
         }
     }
-    else //LEFT
-    {
-        if (abs(listenerAngle) <= 90) //BOTTOM
-        {
-            pan = ofMap(listenerAngle, 0, -90, 0, -1);
-        }
-        else
-        {
-            pan = ofMap(listenerAngle, -90, -180, -1, 0);
-        }
-    }
-    soundPlayer.setPan(pan);
 }
 
 void SoundPoint::setVolume(float volume)
@@ -119,16 +137,21 @@ void SoundPoint::draw()
     ofDrawBitmapString(panString, position.x-getBitmapStringBoundingBox(panString).getWidth()/2, position.y+30);
 }
 
-
+void SoundPoint::startPlaying()
+{
+    isPlaying = true;
+    lastPlayStartTime = ofGetElapsedTimeMillis();
+    soundPlayer.play();
+}
 
 
 
 
 
 //AMBIANT SOUND POINT
-void AmbiantSoundPoint::setup(string aSoundPath, float volume)
+void AmbiantSoundPoint::setup(string aSoundPath,float aLoopRate, float volume)
 {
-    SoundPoint::setup(0, 0, 100, aSoundPath);
+    SoundPoint::setup(0, 0, 100,aLoopRate, aSoundPath);
     setVolume(volume);
 }
 

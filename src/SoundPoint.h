@@ -30,15 +30,22 @@ public:
 class SoundPoint : public SoundObject
 {
 public:
-
-    void setup(int posX, int posY, int aMaxDistance,string aSoundPath);
+    
+    void setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath);
     void update(SoundListener listener);
     void setVolume(float volume);
     void draw();
     
 private:
+    
+    void startPlaying();
+    bool isPlaying;
     string soundPath;
     int maxDistance;
+    float loopRate;
+    float loopOffset;
+    float lastPlayStartTime;
+    float lastPlayEndTime;
     ofSoundPlayer soundPlayer;
 };
 
@@ -51,7 +58,7 @@ private:
 class AmbiantSoundPoint : public SoundPoint
 {
 public:
-    void setup(string aSoundPath, float volume);
+    void setup(string aSoundPath,float aLoopRate, float volume);
     void draw();
 };
 
