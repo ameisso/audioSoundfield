@@ -56,7 +56,14 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, st
     loopRate = aLoopRate;
     soundPath = aSoundPath;
     soundPlayer.load(soundPath);
-    soundPlayer.setLoop(false);
+    if(loopRate == 0)
+    {
+        soundPlayer.setLoop(true);
+    }
+    else
+    {
+        soundPlayer.setLoop(false);
+    }
     soundPlayer.setVolume(0);
     startPlaying();
 }
@@ -139,7 +146,7 @@ void SoundPoint::draw()
     {
         ofSetColor(150);
     }
-
+    
     ofDrawBitmapString(soundPath, position.x-getBitmapStringBoundingBox(soundPath).getWidth()/2, position.y-20);
     if(  soundPlayer.isPlaying() )
     {
