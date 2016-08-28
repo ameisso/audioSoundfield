@@ -136,13 +136,22 @@ void SoundPoint::draw()
     ofDrawCircle(position.x,position.y,maxDistance);
     
     ofSetColor(150);
+    
     ofDrawBitmapString(soundPath, position.x-getBitmapStringBoundingBox(soundPath).getWidth()/2, position.y-20);
-    
-    string volumeString("vol : "+ofToString(int(soundPlayer.getVolume()*100)));
-    ofDrawBitmapString(volumeString, position.x-getBitmapStringBoundingBox(volumeString).getWidth()/2, position.y+20);
-    
-    string panString("pan : "+ofToString(int(soundPlayer.getPan()*100)));
-    ofDrawBitmapString(panString, position.x-getBitmapStringBoundingBox(panString).getWidth()/2, position.y+30);
+    if(  soundPlayer.isPlaying() )
+    {
+        string volumeString("vol : "+ofToString(int(soundPlayer.getVolume()*100)));
+        ofDrawBitmapString(volumeString, position.x-getBitmapStringBoundingBox(volumeString).getWidth()/2, position.y+20);
+        
+        string panString("pan : "+ofToString(int(soundPlayer.getPan()*100)));
+        ofDrawBitmapString(panString, position.x-getBitmapStringBoundingBox(panString).getWidth()/2, position.y+30);
+    }
+    else
+    {
+        int nextPlay = abs((ofGetElapsedTimeMillis() - (lastPlayEndTime + loopOffset + loopRate*1000))/1000);
+        string nextString("next : "+ofToString(nextPlay));
+        ofDrawBitmapString(nextString, position.x-getBitmapStringBoundingBox(nextString).getWidth()/2, position.y+20);
+    }
 }
 
 void SoundPoint::startPlaying()
