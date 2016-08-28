@@ -184,6 +184,10 @@ void ofApp::keyPressed(int key)
     {
         loadSettings();
     }
+    else if(key =='f')
+    {
+        ofToggleFullscreen();
+    }
 }
 
 void ofApp::keyReleased(int key)
