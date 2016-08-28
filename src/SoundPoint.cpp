@@ -200,14 +200,12 @@ void SoundListener::setup(int posX, int posY, float anOrientation)
 {
     SoundObject::setup(posX, posY);
     orientation = anOrientation;
-    walkSpeed = 10;
+    walkSpeed = ofVec2f(0);
 }
 
-void SoundListener::update(ofVec2f direction)
+void SoundListener::update()
 {
-    direction.normalize();
-    position.x += direction.x*walkSpeed;
-    position.y += direction.y*walkSpeed;
+    position += walkSpeed;
 }
 
 void SoundListener::draw()

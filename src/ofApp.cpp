@@ -57,6 +57,7 @@ void ofApp::update()
     {
         (it)->update(listener);
     }
+    listener.update();
 }
 
 void ofApp::draw()
@@ -103,11 +104,11 @@ void ofApp::handleOSC()
             {
                 if (m.getArgType(0) == OFXOSC_TYPE_INT32 && m.getArgType(1) == OFXOSC_TYPE_INT32)
                 {
-                    listener.update(ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1)));
+                    listener.walkSpeed = ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1));
                 }
                 else if ((m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT))
                 {
-                    listener.update(ofVec2f(m.getArgAsFloat(0), m.getArgAsFloat(1)*-1));
+                    listener.walkSpeed = ofVec2f(m.getArgAsFloat(0), m.getArgAsFloat(1)*-1);
                 }
             }
         }
@@ -177,7 +178,7 @@ void ofApp::keyPressed(int key)
     {
         direction = ofVec2f(1,0);
     }
-    listener.update(direction);
+    listener.walkSpeed += direction;
     
     if(key =='r')
     {
@@ -185,8 +186,12 @@ void ofApp::keyPressed(int key)
     }
 }
 
-void ofApp::keyReleased(int key){
-    
+void ofApp::keyReleased(int key)
+{
+    if( key == OF_KEY_DOWN || key == OF_KEY_UP || key == OF_KEY_LEFT || key == OF_KEY_RIGHT )
+    {
+        listener.walkSpeed = ofVec2f(0);
+    }
 }
 
 

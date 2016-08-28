@@ -72,13 +72,13 @@ class SoundListener : public SoundObject
 {
 public:
     void setup(int posX, int posY, float anOrientation);
-    void update(ofVec2f direction);
+    void update();
     void draw();
     
     float orientation;
-    
+    ofVec2f walkSpeed;
     private :
-    float walkSpeed;
+ 
     
 };
 
