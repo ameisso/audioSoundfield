@@ -135,8 +135,11 @@ void SoundPoint::draw()
     ofNoFill();
     ofDrawCircle(position.x,position.y,maxDistance);
     
-    ofSetColor(150);
-    
+    if( ! soundPlayer.isPlaying() )
+    {
+        ofSetColor(150);
+    }
+
     ofDrawBitmapString(soundPath, position.x-getBitmapStringBoundingBox(soundPath).getWidth()/2, position.y-20);
     if(  soundPlayer.isPlaying() )
     {
