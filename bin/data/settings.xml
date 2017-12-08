@@ -21,10 +21,17 @@
         <fileName>water.wav</fileName>
     </soundPoint>
     <soundPoint>
+        <posX>500</posX>
+        <posY>500</posY>
+        <maxDistance>300</maxDistance>
+        <loopRate>0</loopRate>
+        <fileName>water.wav</fileName>
+    </soundPoint>
+    <soundPoint>
         <posX>600</posX>
         <posY>400</posY>
         <maxDistance>100</maxDistance>
-        <loopRate>0</loopRate>
+        <loopRate>100</loopRate>
         <fileName>vocal.wav</fileName>
     </soundPoint>
 </soundPoints>
@@ -32,9 +39,15 @@
     <ambiantSound>
         <fileName>rain.wav</fileName>
         <loopRate>0</loopRate>
-        <volume>0.1</volume>
+        <volume>1</volume>
     </ambiantSound>
 </ambiantSounds>
 <OSC>
     <inputPort>8000</inputPort>
 </OSC>
+<SVG>
+    <fileName>surfaces.svg</fileName>
+    <scale>1 </scale>
+    <offsetX>0</offsetX>
+    <offsetY>0</offsetY>
+</SVG>

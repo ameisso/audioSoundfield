@@ -3,8 +3,8 @@
 void ofApp::setup()
 {
     ofSetFrameRate(30);
+    ofSetVerticalSync(true);
     ofSetCircleResolution(100);
-    
     listener.setup(350, 500, 0);
     loadSettings();
 }
@@ -39,9 +39,16 @@ void ofApp::loadSettings()
             settings.popTag();
         }
         settings.popTag();
-        
         settings.pushTag("OSC");
         oscReceiver.setup(settings.getValue("listenPort", 8000));
+        settings.popTag();
+        
+        settings.pushTag("SVG");
+        backgroundPlan.load(settings.getValue("fileName", ""));
+        svgScale = settings.getValue("scale", 1.0);
+        svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
+        ofLog()<<backgroundPlan.getWidth()<<" " <<backgroundPlan.getHeight()<<" " <<backgroundPlan.getNumPath();
+        
         settings.popTag();
     }
     else
@@ -63,6 +70,13 @@ void ofApp::update()
 void ofApp::draw()
 {
     ofBackground(50);
+    ofPushMatrix();
+    ofTranslate(svgOffset.x,svgOffset.y);
+    ofScale(svgScale, svgScale);
+
+
+    backgroundPlan.draw();
+    ofPopMatrix();
     ofSetColor(255,255,0);
     for(vector<SoundPoint>::iterator it = soundPoints.begin(); it != soundPoints.end(); ++it)
     {
@@ -118,7 +132,6 @@ void ofApp::handleOSC()
             {
                 if (m.getArgType(0) == OFXOSC_TYPE_FLOAT)
                 {
-                    
                     listener.orientation = ofMap(m.getArgAsFloat(0),0,1,-180,180);
                 }
             }

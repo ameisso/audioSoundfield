@@ -4,6 +4,7 @@
 #include "SoundPoint.h"
 #include "ofxXmlSettings.h"
 #include "ofxOSC.h"
+#include "ofxSvg.h"
 
 class ofApp : public ofBaseApp{
 
@@ -23,6 +24,10 @@ class ofApp : public ofBaseApp{
     SoundListener listener;
     ofxXmlSettings settings;
     ofxOscReceiver oscReceiver;
+    
+    ofxSVG backgroundPlan;
+    float svgScale;
+    ofPoint svgOffset;
     
     vector<SoundPoint> soundPoints;
     vector<AmbiantSoundPoint> ambiantPoints;
