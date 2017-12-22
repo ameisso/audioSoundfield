@@ -40,7 +40,10 @@ void ofApp::loadSettings()
         }
         settings.popTag();
         settings.pushTag("OSC");
+        oscReceiver.setup(-1);
+        oscSender.setup("localhost", 1);
         oscReceiver.setup(settings.getValue("listenPort", 8000));
+        oscSender.setup(settings.getValue("targetIP", "localhost"), settings.getValue("targetPort", 1234));
         settings.popTag();
         
         settings.pushTag("SVG");
@@ -179,17 +182,17 @@ void ofApp::keyPressed(int key)
     {
         direction = ofVec2f(0,1);
     }
-    else  if(key == OF_KEY_UP)
+    if(key == OF_KEY_UP)
     {
-        direction = ofVec2f(0,-1);
+        direction += ofVec2f(0,-1);
     }
-    else  if(key == OF_KEY_LEFT)
+    if(key == OF_KEY_LEFT)
     {
-        direction = ofVec2f(-1,0);
+        direction += ofVec2f(-1,0);
     }
-    else  if(key == OF_KEY_RIGHT)
+    if(key == OF_KEY_RIGHT)
     {
-        direction = ofVec2f(1,0);
+        direction += ofVec2f(1,0);
     }
     listener.walkSpeed += direction;
     
@@ -222,6 +225,11 @@ void ofApp::mouseDragged(int x, int y , int button)
 {
     listener.position.x = x;
     listener.position.y = y;
+    ofxOscMessage m;
+    m.addIntArg(x);
+    m.addIntArg(y);
+    m.setAddress("/listener/position");
+    oscSender.sendMessage(m);
 }
 
 void ofApp::mouseMoved(int x, int y)

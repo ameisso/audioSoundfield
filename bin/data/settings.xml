@@ -3,51 +3,88 @@
         <posX>100</posX>
         <posY>100</posY>
         <maxDistance>50</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>bass.wav</fileName>
+        <loopRate>20</loopRate>
+        <fileName>centralStation.wav</fileName>
     </soundPoint>
     <soundPoint>
-        <posX>600</posX>
-        <posY>100</posY>
-        <maxDistance>100</maxDistance>
+        <posX>700</posX>
+        <posY>300</posY>
+        <maxDistance>300</maxDistance>
         <loopRate>0</loopRate>
-        <fileName>bells.wav</fileName>
+        <fileName>chant.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>500</posX>
+        <posY>300</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>0</loopRate>
+        <fileName>danois.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>300</posX>
+        <posY>300</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>0</loopRate>
+        <fileName>eau.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>300</posX>
+        <posY>500</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>10</loopRate>
+        <fileName>repas femmes.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>500</posX>
+        <posY>600</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>20</loopRate>
+        <fileName>guard.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>200</posX>
+        <posY>600</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>0</loopRate>
+        <fileName>violon.wav</fileName>
     </soundPoint>
     <soundPoint>
         <posX>100</posX>
         <posY>300</posY>
+        <maxDistance>150</maxDistance>
+        <loopRate>20</loopRate>
+        <fileName>grandmere.wav</fileName>
+    </soundPoint>
+    <soundPoint>
+        <posX>100</posX>
+        <posY>380</posY>
         <maxDistance>100</maxDistance>
         <loopRate>10</loopRate>
-        <fileName>water.wav</fileName>
+        <fileName>enfant1.wav</fileName>
     </soundPoint>
     <soundPoint>
-        <posX>500</posX>
-        <posY>500</posY>
-        <maxDistance>300</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>water.wav</fileName>
-    </soundPoint>
-    <soundPoint>
-        <posX>600</posX>
-        <posY>400</posY>
+        <posX>100</posX>
+        <posY>350</posY>
         <maxDistance>100</maxDistance>
-        <loopRate>100</loopRate>
-        <fileName>vocal.wav</fileName>
+        <loopRate>8</loopRate>
+        <fileName>enfant2.wav</fileName>
     </soundPoint>
 </soundPoints>
 <ambiantSounds>
     <ambiantSound>
-        <fileName>rain.wav</fileName>
-        <loopRate>0</loopRate>
-        <volume>1</volume>
+        <fileName>train1.wav</fileName>
+        <loopRate>50</loopRate>
+        <volume>0.8</volume>
     </ambiantSound>
 </ambiantSounds>
 <OSC>
     <inputPort>8000</inputPort>
+    <targetIP>127.0.0.1</targetIP>
+    <targetPort>3333</targetPort>
 </OSC>
 <SVG>
     <fileName>surfaces.svg</fileName>
-    <scale>1 </scale>
+    <scale>0 </scale>
     <offsetX>0</offsetX>
     <offsetY>0</offsetY>
 </SVG>

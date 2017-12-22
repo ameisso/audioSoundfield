@@ -24,6 +24,7 @@ class ofApp : public ofBaseApp{
     SoundListener listener;
     ofxXmlSettings settings;
     ofxOscReceiver oscReceiver;
+    ofxOscSender oscSender;
     
     ofxSVG backgroundPlan;
     float svgScale;
