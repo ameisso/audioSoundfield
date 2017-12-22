@@ -46,6 +46,15 @@ ofRectangle SoundObject::getBitmapStringBoundingBox(string text)
     return ofRectangle(0,0,width, height);
 }
 
+void SoundObject::setPosition(ofVec2f aPosition)
+{
+    position = aPosition;
+}
+
+ofVec2f SoundObject::getPosition()
+{
+    return position;
+}
 //SOUND POINT
 
 
@@ -72,13 +81,13 @@ void SoundPoint::update(SoundListener listener)
 {
     if( soundPlayer.isPlaying() )
     {
-        float distance =  position.distance( listener.position );
+        float distance =  getPosition().distance( listener.getPosition() );
         float volume = ofMap(distance, maxDistance, 0, 0, 1);
         soundPlayer.setVolume(volume);
         
         ofVec2f directionVector(0,-1);
         directionVector.rotate(listener.orientation);
-        ofVec2f sourceVector = ofVec2f(position.x-listener.position.x,position.y-listener.position.y);
+        ofVec2f sourceVector = ofVec2f(getPosition().x-listener.getPosition().x,getPosition().y-listener.getPosition().y);
         float listenerAngle = directionVector.angle(sourceVector);
         float pan;
         if( listenerAngle > 0)//RIGHT
@@ -137,30 +146,30 @@ void SoundPoint::draw()
     {
         ofSetColor(80);
     }
-    ofDrawCircle(position.x,position.y,10);
+    ofDrawCircle(getPosition().x,getPosition().y,10);
     
     ofNoFill();
-    ofDrawCircle(position.x,position.y,maxDistance);
+    ofDrawCircle(getPosition().x,getPosition().y,maxDistance);
     
     if( ! soundPlayer.isPlaying() )
     {
         ofSetColor(150);
     }
     
-    ofDrawBitmapString(soundPath, position.x-getBitmapStringBoundingBox(soundPath).getWidth()/2, position.y-20);
+    ofDrawBitmapString(soundPath, getPosition().x-getBitmapStringBoundingBox(soundPath).getWidth()/2, getPosition().y-20);
     if(  soundPlayer.isPlaying() )
     {
         string volumeString("vol : "+ofToString(int(soundPlayer.getVolume()*100)));
-        ofDrawBitmapString(volumeString, position.x-getBitmapStringBoundingBox(volumeString).getWidth()/2, position.y+20);
+        //ofDrawBitmapString(volumeString, getPosition().x-getBitmapStringBoundingBox(volumeString).getWidth()/2, getPosition().y+20);
         
         string panString("pan : "+ofToString(int(soundPlayer.getPan()*100)));
-        ofDrawBitmapString(panString, position.x-getBitmapStringBoundingBox(panString).getWidth()/2, position.y+30);
+        //ofDrawBitmapString(panString, getPosition().x-getBitmapStringBoundingBox(panString).getWidth()/2, getPosition().y+30);
     }
     else
     {
         int nextPlay = abs((ofGetElapsedTimeMillis() - (lastPlayEndTime + loopOffset + loopRate*1000))/1000);
         string nextString("next : "+ofToString(nextPlay));
-        ofDrawBitmapString(nextString, position.x-getBitmapStringBoundingBox(nextString).getWidth()/2, position.y+20);
+        ofDrawBitmapString(nextString, getPosition().x-getBitmapStringBoundingBox(nextString).getWidth()/2, getPosition().y+20);
     }
 }
 
@@ -205,7 +214,7 @@ void SoundListener::setup(int posX, int posY, float anOrientation)
 
 void SoundListener::update()
 {
-    position += walkSpeed;
+    setPosition( getPosition() + walkSpeed );
 }
 
 void SoundListener::draw()
@@ -215,12 +224,26 @@ void SoundListener::draw()
     ofSetColor(200,000,100);
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
-    ofTranslate(position.x,position.y);
+    ofTranslate(getPosition().x,getPosition().y);
     ofRotate(45);
     ofDrawRectangle(0,0, squareSize, squareSize);
     ofPopMatrix();
     
-    ofVec2f directionVector(0,-30);
-    directionVector.rotate(orientation);
-    ofDrawLine(position, ofVec2f(position.x+directionVector.x,position.y+directionVector.y));
+    ofVec2f orientationVector(0,-30);
+    orientationVector.rotate(orientation);
+    ofDrawLine(getPosition(), ofVec2f(getPosition().x+orientationVector.x,getPosition().y+orientationVector.y));
+    
+    ofSetColor(000,000,100);
+    ofDrawLine(getPosition(), ofVec2f(getPosition().x+direction.x*100,getPosition().y+direction.y*100));
+}
+
+void SoundListener::setPosition(ofVec2f aPosition)
+{
+#warning : should smooth with a vector of previous values
+    if( getPosition()-aPosition != ofVec2f(0) )
+    {
+        direction = aPosition - getPosition();
+        orientation = ofVec2f(0,-1).angle(direction);
+    }
+    SoundObject::setPosition(aPosition);
 }

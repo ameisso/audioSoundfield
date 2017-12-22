@@ -50,7 +50,6 @@ void ofApp::loadSettings()
         backgroundPlan.load(settings.getValue("fileName", ""));
         svgScale = settings.getValue("scale", 1.0);
         svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
-        ofLog()<<backgroundPlan.getWidth()<<" " <<backgroundPlan.getHeight()<<" " <<backgroundPlan.getNumPath();
         
         settings.popTag();
     }
@@ -76,8 +75,8 @@ void ofApp::draw()
     ofPushMatrix();
     ofTranslate(svgOffset.x,svgOffset.y);
     ofScale(svgScale, svgScale);
-
-
+    
+    
     backgroundPlan.draw();
     ofPopMatrix();
     ofSetColor(255,255,0);
@@ -107,11 +106,11 @@ void ofApp::handleOSC()
             {
                 if (m.getArgType(0) == OFXOSC_TYPE_INT32 && m.getArgType(1) == OFXOSC_TYPE_INT32)
                 {
-                    listener.position = ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1));
+                    listener.setPosition( ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1)) );
                 }
                 else if ((m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT))
                 {
-                    listener.position = ofVec2f(m.getArgAsFloat(0)*ofGetWidth(), (1-m.getArgAsFloat(1))*ofGetHeight());
+                    listener.setPosition( ofVec2f(m.getArgAsFloat(0)*ofGetWidth(), (1-m.getArgAsFloat(1))*ofGetHeight()) );
                 }
             }
         }
@@ -217,14 +216,12 @@ void ofApp::keyReleased(int key)
 
 void ofApp::mousePressed(int x, int y , int button)
 {
-    listener.position.x = x;
-    listener.position.y = y;
+    listener.setPosition( ofVec2f(x,y) );
 }
 
 void ofApp::mouseDragged(int x, int y , int button)
 {
-    listener.position.x = x;
-    listener.position.y = y;
+    listener.setPosition( ofVec2f(x,y) );
     ofxOscMessage m;
     m.addIntArg(x);
     m.addIntArg(y);

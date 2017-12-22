@@ -17,7 +17,10 @@ public:
     virtual void update(){};
     virtual  void draw(){};
     ofRectangle getBitmapStringBoundingBox(string text);
+    virtual void setPosition( ofVec2f aPosition );
+    ofVec2f getPosition();
     
+private:
     ofVec2f position;
 };
 
@@ -75,11 +78,11 @@ public:
     void update();
     void draw();
     
+    
+    void setPosition( ofVec2f aPosition );
     float orientation;
     ofVec2f walkSpeed;
-    private :
- 
-    
+    ofVec2f direction;
 };
 
 
