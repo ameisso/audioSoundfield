@@ -1,79 +1,38 @@
 <soundPoints>
     <soundPoint>
-        <posX>100</posX>
-        <posY>100</posY>
-        <maxDistance>50</maxDistance>
-        <fileName>centralStation.wav</fileName>
-        <triggerable>1</triggerable>
+        <params name="centralStation.wav" x="100" y="100" maxDistance="50" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <posX>700</posX>
-        <posY>300</posY>
-        <maxDistance>300</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>chant.wav</fileName>
+        <params name="chant.wav" x="700" y="300" maxDistance="300" />
     </soundPoint>
     <soundPoint>
-        <posX>500</posX>
-        <posY>300</posY>
-        <maxDistance>150</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>danois.wav</fileName>
+        <params name="danois.wav" x="500" y="300" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <posX>300</posX>
-        <posY>300</posY>
-        <maxDistance>150</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>eau.wav</fileName>
+        <params name="eau.wav" x="300" y="300" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <posX>300</posX>
-        <posY>500</posY>
-        <maxDistance>150</maxDistance>
-        <fileName>repas femmes.wav</fileName>
+        <params name="repas femmes.wav" x="300" y="500" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <posX>500</posX>
-        <posY>600</posY>
-        <maxDistance>150</maxDistance>
-        <fileName>guard.wav</fileName>
-        <triggerable>1</triggerable>
+        <params name="guard.wav" x="500" y="600" maxDistance="150" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <posX>200</posX>
-        <posY>600</posY>
-        <maxDistance>150</maxDistance>
-        <loopRate>0</loopRate>
-        <fileName>violon.wav</fileName>
+        <params name="violon.wav" x="200" y="600" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <posX>100</posX>
-        <posY>300</posY>
-        <maxDistance>150</maxDistance>
-        <fileName>grandmere.wav</fileName>
-        <triggerable>1</triggerable>
+        <params name="grandmere.wav" x="100" y="300" maxDistance="150" loopRate="10" />
     </soundPoint>
     <soundPoint>
-        <posX>100</posX>
-        <posY>380</posY>
-        <maxDistance>100</maxDistance>
-        <fileName>enfant1.wav</fileName>
-        <triggerable>1</triggerable>
+        <params name="enfant1.wav" x="100" y="380" maxDistance="100" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <posX>100</posX>
-        <posY>350</posY>
-        <maxDistance>100</maxDistance>
-        <fileName>enfant2.wav</fileName>
-        <triggerable>1</triggerable>
+        <params name="enfant2.wav" x="100" y="350" maxDistance="100" triggerable="1" />
     </soundPoint>
 </soundPoints>
 <ambiantSounds>
     <ambiantSound>
-        <fileName>train1.wav</fileName>
-        <loopRate>10</loopRate>
-        <volume>0.8</volume>
+        <params name="train1.wav" loopRate="2" volume="1"/>
     </ambiantSound>
 </ambiantSounds>
 <OSC>
@@ -82,12 +41,12 @@
     <targetPort>3333</targetPort>
 </OSC>
 <SVG>
-    <fileName>surffaces.svg</fileName>
+    <fileName>plan.svg</fileName>
     <scale>1</scale>
     <offsetX>500</offsetX>
     <offsetY>500</offsetY>
 </SVG>
 
 <IMAGE>
-    <fileName>logo.png</fileName>
+    <fileName>map.png</fileName>
 </IMAGE>
