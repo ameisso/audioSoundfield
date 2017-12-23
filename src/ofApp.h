@@ -29,6 +29,7 @@ private:
     ofxOscSender oscSender;
     
     ofxSVG backgroundPlan;
+    ofImage backgroundImage;
     float svgScale;
     ofPoint svgOffset;
     

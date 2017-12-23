@@ -50,7 +50,12 @@ void ofApp::loadSettings()
         backgroundPlan.load(settings.getValue("fileName", ""));
         svgScale = settings.getValue("scale", 1.0);
         svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
-        
+        settings.popTag();
+        settings.pushTag("IMAGE");
+        if( backgroundImage.load(settings.getValue("fileName", "")) );
+        {
+            backgroundImage.resize(backgroundImage.getWidth()*svgScale,backgroundImage.getHeight()*svgScale);
+        }
         settings.popTag();
     }
     else
@@ -72,11 +77,15 @@ void ofApp::update()
 void ofApp::draw()
 {
     ofBackground(50);
+    ofSetColor(255);
+    ofSetRectMode(OF_RECTMODE_CENTER);
+    if( svgScale > 0 )
+    {
+        backgroundImage.draw(svgOffset.x,svgOffset.y);
+    }
     ofPushMatrix();
     ofTranslate(svgOffset.x,svgOffset.y);
     ofScale(svgScale, svgScale);
-    
-    
     backgroundPlan.draw();
     ofPopMatrix();
     ofSetColor(255,255,0);
