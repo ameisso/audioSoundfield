@@ -206,23 +206,23 @@ void ofApp::mousePressed(int x, int y , int button)
 
 void ofApp::mouseDragged(int x, int y , int button)
 {
-    listener.setPosition( ofVec2f(x,y) );
-    ofxOscMessage m;
-    m.addIntArg(x);
-    m.addIntArg(y);
-    m.setAddress("/listener/position");
-    oscSender.sendMessage(m);
+    updatePosition(x,y);
 }
 
 void ofApp::mouseMoved(int x, int y)
 {
     if( isMovingWithMouse )
     {
-        listener.setPosition( ofVec2f(x,y) );
-        ofxOscMessage m;
-        m.addIntArg(x);
-        m.addIntArg(y);
-        m.setAddress("/listener/position");
-        oscSender.sendMessage(m);
+        updatePosition(x,y);
     }
+}
+
+void ofApp::updatePosition(int x, int y)
+{
+    listener.setPosition( ofVec2f(x,y) );
+    ofxOscMessage m;
+    m.addIntArg(x);
+    m.addIntArg(y);
+    m.setAddress("/listener/position");
+    oscSender.sendMessage(m);
 }

@@ -36,4 +36,6 @@ private:
     vector<AmbiantSoundPoint> ambiantPoints;
     
     bool isMovingWithMouse;
+    
+    void updatePosition(int x, int y);
 };
