@@ -3,8 +3,8 @@
         <posX>100</posX>
         <posY>100</posY>
         <maxDistance>50</maxDistance>
-        <loopRate>20</loopRate>
         <fileName>centralStation.wav</fileName>
+        <triggerable>1</triggerable>
     </soundPoint>
     <soundPoint>
         <posX>700</posX>
@@ -31,15 +31,14 @@
         <posX>300</posX>
         <posY>500</posY>
         <maxDistance>150</maxDistance>
-        <loopRate>10</loopRate>
         <fileName>repas femmes.wav</fileName>
     </soundPoint>
     <soundPoint>
         <posX>500</posX>
         <posY>600</posY>
         <maxDistance>150</maxDistance>
-        <loopRate>20</loopRate>
         <fileName>guard.wav</fileName>
+        <triggerable>1</triggerable>
     </soundPoint>
     <soundPoint>
         <posX>200</posX>
@@ -52,28 +51,28 @@
         <posX>100</posX>
         <posY>300</posY>
         <maxDistance>150</maxDistance>
-        <loopRate>20</loopRate>
         <fileName>grandmere.wav</fileName>
+        <triggerable>1</triggerable>
     </soundPoint>
     <soundPoint>
         <posX>100</posX>
         <posY>380</posY>
         <maxDistance>100</maxDistance>
-        <loopRate>10</loopRate>
         <fileName>enfant1.wav</fileName>
+        <triggerable>1</triggerable>
     </soundPoint>
     <soundPoint>
         <posX>100</posX>
         <posY>350</posY>
         <maxDistance>100</maxDistance>
-        <loopRate>8</loopRate>
         <fileName>enfant2.wav</fileName>
+        <triggerable>1</triggerable>
     </soundPoint>
 </soundPoints>
 <ambiantSounds>
     <ambiantSound>
         <fileName>train1.wav</fileName>
-        <loopRate>50</loopRate>
+        <loopRate>10</loopRate>
         <volume>0.8</volume>
     </ambiantSound>
 </ambiantSounds>

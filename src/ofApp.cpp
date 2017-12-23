@@ -21,10 +21,10 @@ void ofApp::loadSettings()
         for(int i = 0; i < numberOfSavedPoints; i++)
         {
             settings.pushTag("soundPoint", i);
-            
             SoundPoint p;
-            p.setup(settings.getValue("posX", 0),settings.getValue("posY", 0),settings.getValue("maxDistance", 0), settings.getValue("loopRate", 0),settings.getValue("fileName", ""));
+            p.setup(settings.getValue("posX", 0),settings.getValue("posY", 0),settings.getValue("maxDistance", 0), settings.getValue("loopRate", 0),settings.getValue("fileName", ""),settings.getValue("triggerable", 0) );
             soundPoints.push_back(p);
+            
             settings.popTag();
         }
         settings.popTag();

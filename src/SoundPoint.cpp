@@ -57,14 +57,15 @@ ofVec2f SoundObject::getPosition()
 }
 
 //SOUND POINT
-void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath)
+void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath, bool isTrigerable)
 {
     SoundObject::setup(posX, posY);
     maxDistance = aMaxDistance;
     loopRate = aLoopRate;
     soundPath = aSoundPath;
+    trigerable = isTrigerable;
     soundPlayer.load(soundPath);
-    if(loopRate == 0)
+    if(loopRate == 0 && ! trigerable)
     {
         soundPlayer.setLoop(true);
     }
@@ -77,9 +78,9 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, st
 
 void SoundPoint::update(SoundListener listener)
 {
+    float distance =  getPosition().distance( listener.getPosition() );
     if( soundPlayer.isPlaying() )
     {
-        float distance =  getPosition().distance( listener.getPosition() );
         float volume = ofMap(distance, maxDistance, 0, 0, 1);
         soundPlayer.setVolume(volume);
         
@@ -114,6 +115,10 @@ void SoundPoint::update(SoundListener listener)
     }
     else
     {
+        if(distance > maxDistance)
+        {
+            listenerIsInside = false;
+        }
         if( isPlaying )
         {
             isPlaying = false;
@@ -121,9 +126,14 @@ void SoundPoint::update(SoundListener listener)
             loopOffset = ofRandom(duration*0.1); // 10% of global time.
             lastPlayEndTime = ofGetElapsedTimeMillis();
         }
-        if( ofGetElapsedTimeMillis()-lastPlayEndTime > loopRate * 1000.0 + loopOffset && !isPlaying )
+        if( ofGetElapsedTimeMillis()-lastPlayEndTime > loopRate * 1000.0 + loopOffset && !isPlaying && ! trigerable )
         {
             startPlaying();
+        }
+        if( trigerable && distance < maxDistance && !isPlaying && !listenerIsInside  )
+        {
+            startPlaying();
+            listenerIsInside = true;
         }
     }
 }
@@ -163,7 +173,7 @@ void SoundPoint::draw()
         string panString("pan : "+ofToString(int(soundPlayer.getPan()*100)));
         //ofDrawBitmapString(panString, getPosition().x-getBitmapStringBoundingBox(panString).getWidth()/2, getPosition().y+30);
     }
-    else
+    else if( ! trigerable )
     {
         int nextPlay = abs((ofGetElapsedTimeMillis() - (lastPlayEndTime + loopOffset + loopRate*1000))/1000);
         string nextString("next : "+ofToString(nextPlay));
@@ -185,7 +195,7 @@ void SoundPoint::startPlaying()
 //AMBIANT SOUND POINT
 void AmbiantSoundPoint::setup(string aSoundPath,float aLoopRate, float volume)
 {
-    SoundPoint::setup(0, 0, 100,aLoopRate, aSoundPath);
+    SoundPoint::setup(0, 0, 100,aLoopRate, aSoundPath,false);
     setVolume(volume);
 }
 

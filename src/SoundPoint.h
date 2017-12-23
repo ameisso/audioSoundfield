@@ -36,7 +36,7 @@ class SoundPoint : public SoundObject
 {
 public:
     
-    void setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath);
+    void setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath, bool isTrigerable);
     void update(SoundListener listener);
     void setVolume(float volume);
     void draw();
@@ -52,6 +52,8 @@ private:
     float lastPlayStartTime;
     float lastPlayEndTime;
     ofSoundPlayer soundPlayer;
+    bool trigerable;
+    bool listenerIsInside;
 };
 
 
