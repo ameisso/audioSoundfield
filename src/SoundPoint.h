@@ -7,6 +7,8 @@
 //
 #pragma once
 #include "ofMain.h"
+#include "RingBuffer.h"
+
 class SoundListener;
 
 class SoundObject
@@ -87,6 +89,8 @@ private:
     float orientation;
     ofVec2f walkSpeed;
     ofVec2f direction;
+    
+    RingBuffer lastPositions;
 };
 
 

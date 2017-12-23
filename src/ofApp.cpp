@@ -179,6 +179,11 @@ void ofApp::keyPressed(int key)
     {
         ofToggleFullscreen();
     }
+    else if(key =='d')
+    {
+        isMovingWithMouse = true;
+    }
+    
 }
 
 void ofApp::keyReleased(int key)
@@ -186,6 +191,10 @@ void ofApp::keyReleased(int key)
     if( key == OF_KEY_DOWN || key == OF_KEY_UP || key == OF_KEY_LEFT || key == OF_KEY_RIGHT )
     {
         listener.setWalkspeed(ofVec2f(0));
+    }
+    else if(key =='d')
+    {
+        isMovingWithMouse = false;
     }
 }
 
@@ -207,5 +216,13 @@ void ofApp::mouseDragged(int x, int y , int button)
 
 void ofApp::mouseMoved(int x, int y)
 {
-    
+    if( isMovingWithMouse )
+    {
+        listener.setPosition( ofVec2f(x,y) );
+        ofxOscMessage m;
+        m.addIntArg(x);
+        m.addIntArg(y);
+        m.setAddress("/listener/position");
+        oscSender.sendMessage(m);
+    }
 }

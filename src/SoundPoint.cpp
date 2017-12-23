@@ -204,12 +204,12 @@ void AmbiantSoundPoint::draw()
 
 
 //SOUND LISTENER
-
 void SoundListener::setup(int posX, int posY, float anOrientation)
 {
     SoundObject::setup(posX, posY);
     orientation = anOrientation;
     walkSpeed = ofVec2f(0);
+    lastPositions.setup(30);
 }
 
 void SoundListener::update()
@@ -220,8 +220,12 @@ void SoundListener::update()
 void SoundListener::draw()
 {
     ofFill();
-    int squareSize = 20;
     ofSetColor(200,000,100);
+    for( int i = 0 ; i < lastPositions.getSize() ; i++ )
+    {
+        ofDrawCircle(lastPositions[i], 3);
+    }
+    int squareSize = 20;
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
     ofTranslate(getPosition().x,getPosition().y);
@@ -232,20 +236,19 @@ void SoundListener::draw()
     ofVec2f orientationVector(0,-30);
     orientationVector.rotate(orientation);
     ofDrawLine(getPosition(), ofVec2f(getPosition().x+orientationVector.x,getPosition().y+orientationVector.y));
-    
-    ofSetColor(000,000,100);
-    ofDrawLine(getPosition(), ofVec2f(getPosition().x+direction.x*100,getPosition().y+direction.y*100));
 }
 
 void SoundListener::setPosition(ofVec2f aPosition)
 {
-#warning : should smooth with a vector of previous values
-    if( getPosition()-aPosition != ofVec2f(0) )
+    ofVec2f meanVec = ofVec2f(0);
+    for( float i = 0 ; i < lastPositions.getSize()-1 ; i++ )
     {
-        direction = aPosition - getPosition();
-        orientation = ofVec2f(0,-1).angle(direction);
+        float weight = (lastPositions.getSize()-i)/lastPositions.getSize();
+        meanVec += (lastPositions[i]-lastPositions[i-1])*weight;
     }
+    orientation = ofVec2f(0,-1).angle(meanVec);
     SoundObject::setPosition(aPosition);
+    lastPositions.setVec2fValue(aPosition);
 }
 
 float SoundListener::getOrientation()
