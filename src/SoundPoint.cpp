@@ -74,6 +74,7 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, st
         soundPlayer.setLoop(false);
     }
     soundPlayer.setVolume(0);
+    lastPlayEndTime = ofGetElapsedTimeMillis();
 }
 
 void SoundPoint::update(SoundListener listener)

@@ -22,7 +22,7 @@ void ofApp::loadSettings()
         {
             settings.pushTag("soundPoint", i);
             SoundPoint p;
-            p.setup(settings.getValue("posX", 0),settings.getValue("posY", 0),settings.getValue("maxDistance", 0), settings.getValue("loopRate", 0),settings.getValue("fileName", ""),settings.getValue("triggerable", 0) );
+            p.setup(settings.getAttribute("params", "x", 0), settings.getAttribute("params", "y", 0), settings.getAttribute("params", "maxDistance", 0), settings.getAttribute("params", "loopRate", 0) , settings.getAttribute("params", "name", ""),  settings.getAttribute("params", "triggerable", 0));
             soundPoints.push_back(p);
             
             settings.popTag();
@@ -34,7 +34,7 @@ void ofApp::loadSettings()
         {
             settings.pushTag("ambiantSound", i);
             AmbiantSoundPoint a;
-            a.setup(settings.getValue("fileName", ""),settings.getValue("loopRate", 1.0),settings.getValue("volume", 1.0));
+            a.setup(settings.getAttribute("params", "name", ""), settings.getAttribute("params", "loopRate", 0), settings.getAttribute("params", "volume", 0));
             ambiantPoints.push_back(a);
             settings.popTag();
         }
