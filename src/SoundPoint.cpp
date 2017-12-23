@@ -55,9 +55,8 @@ ofVec2f SoundObject::getPosition()
 {
     return position;
 }
+
 //SOUND POINT
-
-
 void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath)
 {
     SoundObject::setup(posX, posY);
@@ -74,7 +73,6 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, st
         soundPlayer.setLoop(false);
     }
     soundPlayer.setVolume(0);
-    startPlaying();
 }
 
 void SoundPoint::update(SoundListener listener)
