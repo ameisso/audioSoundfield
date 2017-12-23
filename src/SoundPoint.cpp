@@ -209,7 +209,7 @@ void SoundListener::setup(int posX, int posY, float anOrientation)
     SoundObject::setup(posX, posY);
     orientation = anOrientation;
     walkSpeed = ofVec2f(0);
-    lastPositions.setup(30);
+    lastPositions.setup(100);
 }
 
 void SoundListener::update()
@@ -240,15 +240,16 @@ void SoundListener::draw()
 
 void SoundListener::setPosition(ofVec2f aPosition)
 {
+    lastPositions.setVec2fValue(aPosition);
     ofVec2f meanVec = ofVec2f(0);
-    for( float i = 0 ; i < lastPositions.getSize()-1 ; i++ )
+    for( float i = 0 ; i < lastPositions.getSize() ; i++ )
     {
         float weight = (lastPositions.getSize()-i)/lastPositions.getSize();
         meanVec += (lastPositions[i]-lastPositions[i-1])*weight;
     }
     orientation = ofVec2f(0,-1).angle(meanVec);
     SoundObject::setPosition(aPosition);
-    lastPositions.setVec2fValue(aPosition);
+    
 }
 
 float SoundListener::getOrientation()
