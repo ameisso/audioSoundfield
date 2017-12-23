@@ -82,37 +82,39 @@ void SoundPoint::update(SoundListener listener)
     float distance =  getPosition().distance( listener.getPosition() );
     if( soundPlayer.isPlaying() )
     {
-        float volume = ofMap(distance, maxDistance, 0, 0, 1);
-        soundPlayer.setVolume(volume);
-        
-        ofVec2f directionVector(0,-1);
-        directionVector.rotate(listener.getOrientation());
-        ofVec2f sourceVector = ofVec2f(getPosition().x-listener.getPosition().x,getPosition().y-listener.getPosition().y);
-        float listenerAngle = directionVector.angle(sourceVector);
-        float pan;
-        if( listenerAngle > 0)//RIGHT
+        if( getPosition() != ofVec2f(0) )
         {
-            if (listenerAngle <= 90) //BOTTOM
+            float volume = ofMap(distance, maxDistance, 0, 0, 1);
+            soundPlayer.setVolume(volume);
+            ofVec2f directionVector(0,-1);
+            directionVector.rotate(listener.getOrientation());
+            ofVec2f sourceVector = ofVec2f(getPosition().x-listener.getPosition().x,getPosition().y-listener.getPosition().y);
+            float listenerAngle = directionVector.angle(sourceVector);
+            float pan;
+            if( listenerAngle > 0)//RIGHT
             {
-                pan = ofMap(listenerAngle, 0, 90, 0, 1);
+                if (listenerAngle <= 90) //BOTTOM
+                {
+                    pan = ofMap(listenerAngle, 0, 90, 0, 1);
+                }
+                else
+                {
+                    pan = ofMap(listenerAngle, 90, 180, 1, 0);
+                }
             }
-            else
+            else //LEFT
             {
-                pan = ofMap(listenerAngle, 90, 180, 1, 0);
+                if (abs(listenerAngle) <= 90) //BOTTOM
+                {
+                    pan = ofMap(listenerAngle, 0, -90, 0, -1);
+                }
+                else
+                {
+                    pan = ofMap(listenerAngle, -90, -180, -1, 0);
+                }
             }
+            soundPlayer.setPan(pan);
         }
-        else //LEFT
-        {
-            if (abs(listenerAngle) <= 90) //BOTTOM
-            {
-                pan = ofMap(listenerAngle, 0, -90, 0, -1);
-            }
-            else
-            {
-                pan = ofMap(listenerAngle, -90, -180, -1, 0);
-            }
-        }
-        soundPlayer.setPan(pan);
     }
     else
     {
@@ -127,7 +129,7 @@ void SoundPoint::update(SoundListener listener)
             loopOffset = ofRandom(duration*0.1); // 10% of global time.
             lastPlayEndTime = ofGetElapsedTimeMillis();
         }
-        if( ofGetElapsedTimeMillis()-lastPlayEndTime > loopRate * 1000.0 + loopOffset && !isPlaying && ! trigerable )
+        if( ofGetElapsedTimeMillis()-lastPlayEndTime > loopRate * 1000.0 + loopOffset && !isPlaying && !trigerable )
         {
             startPlaying();
         }

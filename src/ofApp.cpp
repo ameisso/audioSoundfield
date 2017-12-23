@@ -82,6 +82,11 @@ void ofApp::update()
     {
         (it)->update(listener);
     }
+    
+    for(vector<AmbiantSoundPoint>::iterator it = ambiantPoints.begin(); it != ambiantPoints.end(); ++it)
+    {
+        (it)->update(listener);
+    }
     listener.update();
 }
 

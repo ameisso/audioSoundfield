@@ -21,7 +21,7 @@
         <params name="violon.wav" x="200" y="600" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <params name="grandmere.wav" x="100" y="300" maxDistance="150" loopRate="10" />
+        <params name="grandmere.wav" x="100" y="300" maxDistance="150" loopRate="3" />
     </soundPoint>
     <soundPoint>
         <params name="enfant1.wav" x="100" y="380" maxDistance="100" triggerable="1" />
