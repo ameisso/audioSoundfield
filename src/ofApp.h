@@ -39,4 +39,7 @@ private:
     bool isMovingWithMouse;
     
     void updatePosition(int x, int y);
+    bool fileExists(string name);
+    
+    bool backgroundImageLoaded = false;
 };

@@ -47,14 +47,25 @@ void ofApp::loadSettings()
         settings.popTag();
         
         settings.pushTag("SVG");
-        backgroundPlan.load(settings.getValue("fileName", ""));
+        string fileName = settings.getValue("fileName", "");
+        bool svgExists = fileExists(fileName);
+        if( svgExists )
+        {
+            backgroundPlan.load(fileName);
+        }
         svgScale = settings.getValue("scale", 1.0);
         svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
         settings.popTag();
         settings.pushTag("IMAGE");
-        if( backgroundImage.load(settings.getValue("fileName", "")) );
+        fileName = settings.getValue("fileName", "");
+        bool pngExists = fileExists(fileName);
+        if( pngExists )
         {
-            backgroundImage.resize(backgroundImage.getWidth()*svgScale,backgroundImage.getHeight()*svgScale);
+            if( backgroundImage.load(fileName) );
+            {
+                backgroundImageLoaded = true;
+                backgroundImage.resize(backgroundImage.getWidth()*svgScale,backgroundImage.getHeight()*svgScale);
+            }
         }
         settings.popTag();
     }
@@ -79,7 +90,7 @@ void ofApp::draw()
     ofBackground(50);
     ofSetColor(255);
     ofSetRectMode(OF_RECTMODE_CENTER);
-    if( svgScale > 0 )
+    if( svgScale > 0 && backgroundImageLoaded )
     {
         backgroundImage.draw(svgOffset.x,svgOffset.y);
     }
@@ -235,3 +246,20 @@ void ofApp::updatePosition(int x, int y)
     m.setAddress("/listener/position");
     oscSender.sendMessage(m);
 }
+
+bool ofApp::fileExists(string name)
+{
+    bool fileExists = false;
+    ofDirectory dir("");
+    dir.listDir();
+    for(int i = 0; i < dir.size(); i++)
+    {
+        if(dir.getName(i) == name)
+        {
+            fileExists = true;
+            break;
+        }
+    }
+    return fileExists;
+}
+

@@ -82,8 +82,12 @@
     <targetPort>3333</targetPort>
 </OSC>
 <SVG>
-    <fileName>surfaces.svg</fileName>
-    <scale>0 </scale>
-    <offsetX>0</offsetX>
-    <offsetY>0</offsetY>
+    <fileName>surffaces.svg</fileName>
+    <scale>1</scale>
+    <offsetX>500</offsetX>
+    <offsetY>500</offsetY>
 </SVG>
+
+<IMAGE>
+    <fileName>logo.png</fileName>
+</IMAGE>
