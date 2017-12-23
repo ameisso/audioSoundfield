@@ -78,8 +78,12 @@ public:
     void update();
     void draw();
     
-    
     void setPosition( ofVec2f aPosition );
+    float getOrientation();
+    void setWalkspeed( ofVec2f aWalkSpeed );
+    ofVec2f getWalkSpeed();
+    
+private:
     float orientation;
     ofVec2f walkSpeed;
     ofVec2f direction;

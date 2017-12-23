@@ -114,30 +114,6 @@ void ofApp::handleOSC()
                 }
             }
         }
-        else if(m.getAddress() == "/listener/speed")
-        {
-            if (m.getNumArgs() == 2)
-            {
-                if (m.getArgType(0) == OFXOSC_TYPE_INT32 && m.getArgType(1) == OFXOSC_TYPE_INT32)
-                {
-                    listener.walkSpeed = ofVec2f(m.getArgAsInt32(0), m.getArgAsInt32(1));
-                }
-                else if ((m.getArgType(0) == OFXOSC_TYPE_FLOAT && m.getArgType(1) == OFXOSC_TYPE_FLOAT))
-                {
-                    listener.walkSpeed = ofVec2f(m.getArgAsFloat(0), m.getArgAsFloat(1)*-1);
-                }
-            }
-        }
-        else if(m.getAddress() == "/listener/orientation")
-        {
-            if (m.getNumArgs() == 1)
-            {
-                if (m.getArgType(0) == OFXOSC_TYPE_FLOAT)
-                {
-                    listener.orientation = ofMap(m.getArgAsFloat(0),0,1,-180,180);
-                }
-            }
-        }
         else
         {
             // unrecognized message: display on the bottom of the screen
@@ -193,7 +169,7 @@ void ofApp::keyPressed(int key)
     {
         direction += ofVec2f(1,0);
     }
-    listener.walkSpeed += direction;
+    listener.setWalkspeed( listener.getWalkSpeed() + direction );
     
     if(key =='r')
     {
@@ -209,7 +185,7 @@ void ofApp::keyReleased(int key)
 {
     if( key == OF_KEY_DOWN || key == OF_KEY_UP || key == OF_KEY_LEFT || key == OF_KEY_RIGHT )
     {
-        listener.walkSpeed = ofVec2f(0);
+        listener.setWalkspeed(ofVec2f(0));
     }
 }
 

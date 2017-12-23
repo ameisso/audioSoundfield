@@ -86,7 +86,7 @@ void SoundPoint::update(SoundListener listener)
         soundPlayer.setVolume(volume);
         
         ofVec2f directionVector(0,-1);
-        directionVector.rotate(listener.orientation);
+        directionVector.rotate(listener.getOrientation());
         ofVec2f sourceVector = ofVec2f(getPosition().x-listener.getPosition().x,getPosition().y-listener.getPosition().y);
         float listenerAngle = directionVector.angle(sourceVector);
         float pan;
@@ -246,4 +246,19 @@ void SoundListener::setPosition(ofVec2f aPosition)
         orientation = ofVec2f(0,-1).angle(direction);
     }
     SoundObject::setPosition(aPosition);
+}
+
+float SoundListener::getOrientation()
+{
+    return orientation;
+}
+
+void SoundListener::setWalkspeed(ofVec2f aWalkspeed)
+{
+    walkSpeed = aWalkspeed;
+}
+
+ofVec2f SoundListener::getWalkSpeed()
+{
+    return walkSpeed;
 }
