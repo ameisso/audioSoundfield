@@ -231,20 +231,18 @@ void SoundListener::update()
 void SoundListener::draw()
 {
     ofFill();
-    ofSetColor(200,000,100);
     for( int i = 1 ; i < lastPositions.getSize() ; i++ )
     {
         float weight = (lastPositions.getSize()-i)/float(lastPositions.getSize());
-        ofSetColor(200,000,100,weight*255);
+        ofSetColor(200,200,100,weight*255);
         ofDrawCircle(lastPositions[lastPositions.getSize()-i], 3);
     }
-    ofSetColor(200,000,100);
-    int squareSize = 20;
+    ofSetColor(200,200,100);
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
     ofTranslate(getPosition().x,getPosition().y);
-    ofRotate(45);
-    ofDrawRectangle(0,0, squareSize, squareSize);
+    ofRotate(orientation);
+    ofDrawTriangle(0,0,-5, 20, 5, 20);
     ofPopMatrix();
     
     ofVec2f orientationVector(0,-30);
