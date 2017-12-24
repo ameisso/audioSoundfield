@@ -34,6 +34,6 @@ int RingBuffer::getSize()
 
 ofVec2f RingBuffer::operator[] ( int pos )
 {
-    auto p = abs(currentIndex - pos) % getSize() ;
+    auto p = (currentIndex + pos) % getSize() ;
     return buffer[p] ;
 }

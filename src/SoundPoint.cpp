@@ -234,8 +234,11 @@ void SoundListener::draw()
     ofSetColor(200,000,100);
     for( int i = 0 ; i < lastPositions.getSize() ; i++ )
     {
-        ofDrawCircle(lastPositions[i], 3);
+        float weight = (lastPositions.getSize()-i)/float(lastPositions.getSize());
+        ofSetColor(200,000,100,weight*255);
+        ofDrawCircle(lastPositions[lastPositions.getSize()-i], 3);
     }
+    ofSetColor(200,000,100);
     int squareSize = 20;
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
