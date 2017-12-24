@@ -3,4 +3,4 @@
 - infinite map (listener is entered and sound moves around him) 
 - sounds that stay at a position from the listener 
 - display backtrace (1 minute)
-- triggered element (played once at full volume when the listener enters the area)
+- triggered element (played once at full volume when the listener enters the area)- fix ring buffer read order

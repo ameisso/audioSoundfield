@@ -232,7 +232,7 @@ void SoundListener::draw()
 {
     ofFill();
     ofSetColor(200,000,100);
-    for( int i = 0 ; i < lastPositions.getSize() ; i++ )
+    for( int i = 1 ; i < lastPositions.getSize() ; i++ )
     {
         float weight = (lastPositions.getSize()-i)/float(lastPositions.getSize());
         ofSetColor(200,000,100,weight*255);
@@ -254,16 +254,15 @@ void SoundListener::draw()
 
 void SoundListener::setPosition(ofVec2f aPosition)
 {
-    lastPositions.setVec2fValue(aPosition);
     ofVec2f meanVec = ofVec2f(0);
-    for( float i = 0 ; i < lastPositions.getSize() ; i++ )
+    for( float i = 1 ; i < lastPositions.getSize() ; i++ )
     {
-        float weight = (lastPositions.getSize()-i)/lastPositions.getSize();
-        meanVec += (lastPositions[i]-lastPositions[i-1])*weight;
+        float weight = (lastPositions.getSize()-i)/float(lastPositions.getSize());
+        meanVec += (lastPositions[lastPositions.getSize()+i]-lastPositions[lastPositions.getSize()+i+1])*weight;
     }
-    orientation = ofVec2f(0,-1).angle(meanVec);
+    orientation = ofVec2f(0,1).angle(meanVec);
     SoundObject::setPosition(aPosition);
-    
+    lastPositions.setVec2fValue(aPosition);
 }
 
 float SoundListener::getOrientation()
