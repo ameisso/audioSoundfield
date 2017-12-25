@@ -38,11 +38,12 @@ public:
     
     void setup(int posX, int posY, int aMaxDistance, float aLoopRate, string aSoundPath, bool isTrigerable);
     void update(SoundListener listener);
-    void setVolume(float volume);
+    void setVolume(float aVolume);
     void draw();
     
 private:
     
+    float volume;
     void startPlaying();
     bool isPlaying;
     string soundPath;
@@ -65,7 +66,7 @@ private:
 class AmbiantSoundPoint : public SoundPoint
 {
 public:
-    void setup(string aSoundPath,float aLoopRate, float volume);
+    void setup(string aSoundPath,float aLoopRate, float aVolume);
     void draw();
 };
 

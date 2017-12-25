@@ -84,8 +84,8 @@ void SoundPoint::update(SoundListener listener)
     {
         if( getPosition() != ofVec2f(0) )
         {
-            float volume = ofMap(distance, maxDistance, 0, 0, 1);
-            soundPlayer.setVolume(volume);
+            float newVolume = ofMap(distance, maxDistance, 0, 0, 1);
+            soundPlayer.setVolume(newVolume);
             ofVec2f directionVector(0,-1);
             directionVector.rotate(listener.getOrientation());
             ofVec2f sourceVector = ofVec2f(getPosition().x-listener.getPosition().x,getPosition().y-listener.getPosition().y);
@@ -114,6 +114,10 @@ void SoundPoint::update(SoundListener listener)
                 }
             }
             soundPlayer.setPan(pan);
+        }
+        else
+        {
+            setVolume(volume);
         }
     }
     else
@@ -145,8 +149,9 @@ void SoundPoint::update(SoundListener listener)
     }
 }
 
-void SoundPoint::setVolume(float volume)
+void SoundPoint::setVolume(float aVolume)
 {
+    volume = aVolume;
     soundPlayer.setVolume(volume);
 }
 
@@ -200,10 +205,11 @@ void SoundPoint::startPlaying()
 
 
 //AMBIANT SOUND POINT
-void AmbiantSoundPoint::setup(string aSoundPath,float aLoopRate, float volume)
+void AmbiantSoundPoint::setup(string aSoundPath,float aLoopRate, float aVolume)
 {
     SoundPoint::setup(0, 0, 100,aLoopRate, aSoundPath,false);
-    setVolume(volume);
+    ofLog()<<" "<<aVolume;
+    setVolume(aVolume);
 }
 
 void AmbiantSoundPoint::draw()
