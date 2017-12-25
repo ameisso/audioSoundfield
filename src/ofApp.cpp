@@ -110,6 +110,12 @@ void ofApp::draw()
         it->draw();
     }
     listener.draw();
+    if(showMouse)
+    {
+        ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 10);
+        ofSetColor(0);
+        ofDrawBitmapString(ofToString(ofGetMouseX())+" "+ofToString(ofGetMouseY()), ofGetMouseX()+30, ofGetMouseY()+30);
+    }
 }
 
 
@@ -207,6 +213,10 @@ void ofApp::keyPressed(int key)
     else if(key =='d')
     {
         isMovingWithMouse = true;
+    }
+    else if(key =='i')
+    {
+        showMouse = ! showMouse;
     }
     
 }

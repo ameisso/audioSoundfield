@@ -138,6 +138,10 @@ void SoundPoint::update(SoundListener listener)
             startPlaying();
             listenerIsInside = true;
         }
+        if( ! trigerable && loopRate <= 0)
+        {
+            startPlaying();
+        }
     }
 }
 

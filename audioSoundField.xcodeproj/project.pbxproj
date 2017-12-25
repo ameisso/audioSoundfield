@@ -131,6 +131,7 @@
 		71B23CD11FED075500F754DA /* audioSoundFieldDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioSoundFieldDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B23CD21FEE96B000F754DA /* RingBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RingBuffer.cpp; sourceTree = "<group>"; };
 		71B23CD31FEE96B000F754DA /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		71B23CDD1FF15BD600F754DA /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		71D30EC41FDB15A0009506E6 /* settings.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = settings.xml; path = bin/data/settings.xml; sourceTree = "<group>"; };
 		74337841E4E323B7B35B214E /* SoundPoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SoundPoint.h; path = src/SoundPoint.h; sourceTree = SOURCE_ROOT; };
 		7689F8A0F3D0B7635A8C3104 /* ofxOscArg.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscArg.h; path = ../../../addons/ofxOsc/src/ofxOscArg.h; sourceTree = SOURCE_ROOT; };
@@ -509,6 +510,7 @@
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				71B23CD11FED075500F754DA /* audioSoundFieldDebug.app */,
+				71B23CDD1FF15BD600F754DA /* TODO */,
 			);
 			sourceTree = "<group>";
 		};

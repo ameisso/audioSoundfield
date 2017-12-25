@@ -42,4 +42,5 @@ private:
     bool fileExists(string name);
     
     bool backgroundImageLoaded = false;
+    bool showMouse = false;
 };

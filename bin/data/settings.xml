@@ -1,38 +1,44 @@
 <soundPoints>
     <soundPoint>
-        <params name="centralStation.wav" x="100" y="100" maxDistance="50" triggerable="1" />
+        <params name="centralStation.wav" x="600" y="115r" maxDistance="50" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <params name="chant.wav" x="700" y="300" maxDistance="300" />
+        <params name="chant.wav" x="717" y="241" maxDistance="150" />
     </soundPoint>
     <soundPoint>
-        <params name="danois.wav" x="500" y="300" maxDistance="150" />
+        <params name="danois.wav" x="500" y="300" maxDistance="100" />
     </soundPoint>
     <soundPoint>
-        <params name="eau.wav" x="300" y="300" maxDistance="150" />
+        <params name="eau.wav" x="374" y="94" maxDistance="130" />
     </soundPoint>
     <soundPoint>
-        <params name="repas femmes.wav" x="300" y="500" maxDistance="150" />
+        <params name="repas femmes.wav" x="353" y="215" maxDistance="100" />
     </soundPoint>
     <soundPoint>
-        <params name="guard.wav" x="500" y="600" maxDistance="150" triggerable="1" />
+        <params name="guard.wav" x="477" y="421" maxDistance="40" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <params name="violon.wav" x="200" y="600" maxDistance="150" />
+        <params name="violon.wav" x="663" y="430" maxDistance="100"  />
     </soundPoint>
     <soundPoint>
-        <params name="grandmere.wav" x="100" y="300" maxDistance="150" loopRate="3" />
+        <params name="grandmere.wav" x="301" y="354" maxDistance="80" loopRate="3" />
     </soundPoint>
     <soundPoint>
-        <params name="enfant1.wav" x="100" y="380" maxDistance="100" triggerable="1" />
+        <params name="enfant1.wav" x="375" y="356" maxDistance="60" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <params name="enfant2.wav" x="100" y="350" maxDistance="100" triggerable="1" />
+        <params name="enfant2.wav" x="219" y="352" maxDistance="60" triggerable="1" />
+    </soundPoint>
+    <soundPoint>
+        <params name="carillon.wav" x="95" y="361" maxDistance="80" triggerable="1" />
+    </soundPoint>
+    <soundPoint>
+        <params name="bateau.wav" x="151" y="112" maxDistance="180" triggerable="0" />
     </soundPoint>
 </soundPoints>
 <ambiantSounds>
     <ambiantSound>
-        <params name="train1.wav" loopRate="2" volume="1"/>
+        <params name="train1.wav" loopRate="2" volume="0.1"/>
     </ambiantSound>
 </ambiantSounds>
 <OSC>
@@ -42,11 +48,11 @@
 </OSC>
 <SVG>
     <fileName>plan.svg</fileName>
-    <scale>1</scale>
-    <offsetX>500</offsetX>
-    <offsetY>500</offsetY>
+    <scale>0.5</scale>
+    <offsetX>437</offsetX>
+    <offsetY>310</offsetY>
 </SVG>
 
 <IMAGE>
-    <fileName>map.png</fileName>
+    <fileName>bg.png</fileName>
 </IMAGE>

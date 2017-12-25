@@ -20,3 +20,5 @@ bin/data/train1.wav
 bin/data/train2.wav
 bin/data/tu enregistre.wav
 bin/data/violon.wav
+bin/audioSoundField.app
+bin/soundfieldDebug.app
