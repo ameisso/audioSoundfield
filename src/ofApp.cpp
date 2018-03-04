@@ -7,6 +7,12 @@ void ofApp::setup()
     ofSetCircleResolution(100);
     listener.setup(350, 500, 0);
     loadSettings();
+    ofHideCursor();
+}
+
+void ofApp::exit()
+{
+    ofShowCursor();
 }
 
 void ofApp::loadSettings()
@@ -57,14 +63,24 @@ void ofApp::loadSettings()
         svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
         settings.popTag();
         settings.pushTag("IMAGE");
-        fileName = settings.getValue("fileName", "");
-        bool pngExists = fileExists(fileName);
+        string backgroundName = settings.getValue("backgroundName", "");
+        bool pngExists = fileExists(backgroundName);
         if( pngExists )
         {
-            if( backgroundImage.load(fileName) );
+            if( backgroundImage.load(backgroundName) );
             {
                 backgroundImageLoaded = true;
                 backgroundImage.resize(backgroundImage.getWidth()*svgScale,backgroundImage.getHeight()*svgScale);
+            }
+        }
+        string cursorName = settings.getValue("cursorName", "");
+        pngExists = fileExists(cursorName);
+        if( pngExists )
+        {
+            ofImage listenerImage;
+            if( listenerImage.load(cursorName) );
+            {
+                listener.setImage(listenerImage, settings.getValue("cursorScale", 1.0));
             }
         }
         settings.popTag();
@@ -112,7 +128,11 @@ void ofApp::draw()
             it->draw();
         }
     }
-    listener.draw();
+    listener.drawImage();
+    if(showSounds)
+    {
+        listener.drawCursor();
+    }
     if(showMouse)
     {
         ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 10);
@@ -266,7 +286,7 @@ void ofApp::updatePosition(int x, int y)
     m.addIntArg(x);
     m.addIntArg(y);
     m.setAddress("/listener/position");
-    oscSender.sendMessage(m);
+    //oscSender.sendMessage(m);
 }
 
 bool ofApp::fileExists(string name)

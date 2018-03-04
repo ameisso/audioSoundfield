@@ -81,19 +81,23 @@ class SoundListener : public SoundObject
 public:
     void setup(int posX, int posY, float anOrientation);
     void update();
-    void draw();
+    void drawCursor();
+    void drawImage();
     
     void setPosition( ofVec2f aPosition );
     float getOrientation();
     void setWalkspeed( ofVec2f aWalkSpeed );
     ofVec2f getWalkSpeed();
+    void setImage(ofImage anImage, float scale);
     
 private:
     float orientation;
     ofVec2f walkSpeed;
     ofVec2f direction;
-    
+    ofImage listenerImage;
+    float listenerScale;
     RingBuffer lastPositions;
+    bool gotImage = false;
 };
 
 

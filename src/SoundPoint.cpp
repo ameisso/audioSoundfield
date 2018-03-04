@@ -238,7 +238,7 @@ void SoundListener::update()
     setPosition( getPosition() + walkSpeed );
 }
 
-void SoundListener::draw()
+void SoundListener::drawCursor()
 {
     ofFill();
     for( int i = 1 ; i < lastPositions.getSize() ; i++ )
@@ -258,6 +258,15 @@ void SoundListener::draw()
     ofVec2f orientationVector(0,-30);
     orientationVector.rotate(orientation);
     ofDrawLine(getPosition(), ofVec2f(getPosition().x+orientationVector.x,getPosition().y+orientationVector.y));
+}
+
+void SoundListener::drawImage()
+{
+    ofSetColor(255);
+    if( gotImage )
+    {
+        listenerImage.draw(getPosition(),listenerImage.getWidth()*listenerScale,listenerImage.getHeight()*listenerScale);
+    }
 }
 
 void SoundListener::setPosition(ofVec2f aPosition)
@@ -286,4 +295,11 @@ void SoundListener::setWalkspeed(ofVec2f aWalkspeed)
 ofVec2f SoundListener::getWalkSpeed()
 {
     return walkSpeed;
+}
+
+void SoundListener::setImage(ofImage anImage, float scale)
+{
+    listenerImage = anImage;
+    listenerScale = scale;
+    gotImage = true;
 }

@@ -27,10 +27,13 @@
         <params name="enfant1.wav" x="375" y="356" maxDistance="60" triggerable="1" />
     </soundPoint>
     <soundPoint>
-        <params name="enfant2.wav" x="219" y="352" maxDistance="60" triggerable="1" />
+        <params name="enfant2.wav" x="219" y="352" maxDistance="60" looprate="5" />
     </soundPoint>
     <soundPoint>
-        <params name="carillon.wav" x="95" y="361" maxDistance="80" triggerable="1" />
+        <params name="enfant3.wav" x="245" y="274" maxDistance="40" triggerable="1" />
+    </soundPoint>
+    <soundPoint>
+        <params name="carillon.wav" x="95" y="361" maxDistance="80" triggerable="0" />
     </soundPoint>
     <soundPoint>
         <params name="bateau.wav" x="151" y="112" maxDistance="180" triggerable="0" />
@@ -54,5 +57,7 @@
 </SVG>
 
 <IMAGE>
-    <fileName>bg.png</fileName>
+    <backgroundName>bg.png</backgroundName>
+    <cursorName>pier.jpg</cursorName>
+    <cursorScale>0.1</cursorScale>
 </IMAGE>

@@ -10,6 +10,7 @@ class ofApp : public ofBaseApp{
     
 public:
     void setup();
+    void exit();
     void loadSettings();
     void update();
     void draw();
@@ -42,6 +43,7 @@ private:
     bool fileExists(string name);
     
     bool backgroundImageLoaded = false;
+    bool cursorImageLoaded = false;
     bool showMouse = false;
     bool showSounds = false;
 };
