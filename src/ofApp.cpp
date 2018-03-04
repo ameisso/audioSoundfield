@@ -52,16 +52,6 @@ void ofApp::loadSettings()
         oscSender.setup(settings.getValue("targetIP", "localhost"), settings.getValue("targetPort", 1234));
         settings.popTag();
         
-        settings.pushTag("SVG");
-        string fileName = settings.getValue("fileName", "");
-        bool svgExists = fileExists(fileName);
-        if( svgExists )
-        {
-            backgroundPlan.load(fileName);
-        }
-        svgScale = settings.getValue("scale", 1.0);
-        svgOffset = ofPoint(settings.getValue("offsetX", 0),settings.getValue("offsetY", 0));
-        settings.popTag();
         settings.pushTag("IMAGE");
         string backgroundName = settings.getValue("backgroundName", "");
         bool pngExists = fileExists(backgroundName);
@@ -70,7 +60,7 @@ void ofApp::loadSettings()
             if( backgroundImage.load(backgroundName) );
             {
                 backgroundImageLoaded = true;
-                backgroundImage.resize(backgroundImage.getWidth()*svgScale,backgroundImage.getHeight()*svgScale);
+                //backgroundImage.resize(backgroundImage.getWidth(),backgroundImage.getHeight());
             }
         }
         string cursorName = settings.getValue("cursorName", "");
@@ -131,16 +121,12 @@ void ofApp::draw()
 {
     ofBackground(50);
     ofSetColor(255);
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    if( svgScale > 0 && backgroundImageLoaded )
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    if( backgroundImageLoaded )
     {
-        backgroundImage.draw(svgOffset.x,svgOffset.y);
+        backgroundImage.draw(0, 0, ofGetWidth(), ofGetHeight());
     }
-    ofPushMatrix();
-    ofTranslate(svgOffset.x,svgOffset.y);
-    ofScale(svgScale, svgScale);
-    backgroundPlan.draw();
-    ofPopMatrix();
+    ofSetRectMode(OF_RECTMODE_CENTER);
     ofSetColor(255,255,0);
     if( showSounds )
     {

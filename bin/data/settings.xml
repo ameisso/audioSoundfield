@@ -49,13 +49,6 @@
     <targetIP>127.0.0.1</targetIP>
     <targetPort>3333</targetPort>
 </OSC>
-<SVG>
-    <fileName>plan.svg</fileName>
-    <scale>0.5</scale>
-    <offsetX>437</offsetX>
-    <offsetY>310</offsetY>
-</SVG>
-
 <IMAGE>
     <backgroundName>bg.png</backgroundName>
     <cursorName>pier.jpg</cursorName>

@@ -30,10 +30,7 @@ private:
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
     
-    ofxSVG backgroundPlan;
     ofImage backgroundImage;
-    float svgScale;
-    ofPoint svgOffset;
     
     vector<SoundPoint> soundPoints;
     vector<AmbiantSoundPoint> ambiantPoints;
