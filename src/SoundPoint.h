@@ -53,7 +53,7 @@ private:
     float lastPlayStartTime;
     float lastPlayEndTime;
     ofSoundPlayer soundPlayer;
-    bool trigerable;
+    bool trigerable = false;
     bool listenerIsInside;
 };
 

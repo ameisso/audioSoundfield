@@ -30,7 +30,6 @@ void ofApp::loadSettings()
             SoundPoint p;
             p.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0), settings.getAttribute("params", "maxDistance", 0.0), settings.getAttribute("params", "loopRate", 0.0) , settings.getAttribute("params", "name", ""),  settings.getAttribute("params", "triggerable", 0));
             soundPoints.push_back(p);
-            
             settings.popTag();
         }
         settings.popTag();
@@ -293,7 +292,7 @@ void ofApp::updatePosition(int x, int y)
     m.addIntArg(x);
     m.addIntArg(y);
     m.setAddress("/listener/position");
-    //oscSender.sendMessage(m);
+    oscSender.sendMessage(m);
 }
 
 bool ofApp::fileExists(string name)

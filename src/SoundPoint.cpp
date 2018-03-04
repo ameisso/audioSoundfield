@@ -265,7 +265,11 @@ void SoundListener::drawImage()
     ofSetColor(255);
     if( gotImage )
     {
-        listenerImage.draw(getPosition(),listenerImage.getWidth()*listenerScale,listenerImage.getHeight()*listenerScale);
+        ofPushMatrix();
+        ofTranslate(getPosition().x,getPosition().y);
+        ofRotate(orientation);
+        listenerImage.draw(0,0,listenerImage.getWidth()*listenerScale,listenerImage.getHeight()*listenerScale);
+        ofPopMatrix();
     }
 }
 
