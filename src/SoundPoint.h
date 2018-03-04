@@ -79,7 +79,7 @@ public:
 class SoundListener : public SoundObject
 {
 public:
-    void setup(int posX, int posY, float anOrientation);
+    void setup(int posX, int posY, float anOrientation, int orientationSmoothness = 20);
     void update();
     void drawCursor();
     void drawImage();

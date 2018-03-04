@@ -225,12 +225,12 @@ void AmbiantSoundPoint::draw()
 
 
 //SOUND LISTENER
-void SoundListener::setup(int posX, int posY, float anOrientation)
+void SoundListener::setup(int posX, int posY, float anOrientation, int orientationSmoothness)
 {
     SoundObject::setup(posX, posY);
     orientation = anOrientation;
     walkSpeed = ofVec2f(0);
-    lastPositions.setup(100);
+    lastPositions.setup(orientationSmoothness);
 }
 
 void SoundListener::update()

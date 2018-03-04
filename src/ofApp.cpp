@@ -5,7 +5,7 @@ void ofApp::setup()
     ofSetFrameRate(30);
     ofSetVerticalSync(true);
     ofSetCircleResolution(100);
-    listener.setup(350, 500, 0);
+    
     loadSettings();
     ofHideCursor();
 }
@@ -51,6 +51,9 @@ void ofApp::loadSettings()
         oscSender.setup(settings.getValue("targetIP", "localhost"), settings.getValue("targetPort", 1234));
         settings.popTag();
         
+        settings.pushTag("PARAMS");
+        listener.setup(350, 500, 0, settings.getValue("listenerSmoothness", 0));
+        settings.popTag();
         settings.pushTag("IMAGE");
         string backgroundName = settings.getValue("backgroundName", "");
         bool pngExists = fileExists(backgroundName);
@@ -59,7 +62,7 @@ void ofApp::loadSettings()
             if( backgroundImage.load(backgroundName) );
             {
                 backgroundImageLoaded = true;
-                //backgroundImage.resize(backgroundImage.getWidth(),backgroundImage.getHeight());
+                backgroundImage.resize(ofGetScreenWidth(),ofGetScreenHeight());
             }
         }
         string cursorName = settings.getValue("cursorName", "");
