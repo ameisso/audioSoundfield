@@ -43,4 +43,5 @@ private:
     
     bool backgroundImageLoaded = false;
     bool showMouse = false;
+    bool showSounds = false;
 };

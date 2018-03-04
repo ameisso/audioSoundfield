@@ -105,9 +105,12 @@ void ofApp::draw()
     backgroundPlan.draw();
     ofPopMatrix();
     ofSetColor(255,255,0);
-    for(vector<SoundPoint>::iterator it = soundPoints.begin(); it != soundPoints.end(); ++it)
+    if( showSounds )
     {
-        it->draw();
+        for(vector<SoundPoint>::iterator it = soundPoints.begin(); it != soundPoints.end(); ++it)
+        {
+            it->draw();
+        }
     }
     listener.draw();
     if(showMouse)
@@ -217,6 +220,10 @@ void ofApp::keyPressed(int key)
     else if(key =='i')
     {
         showMouse = ! showMouse;
+    }
+    else if(key =='p')
+    {
+        showSounds = ! showSounds;
     }
     
 }
