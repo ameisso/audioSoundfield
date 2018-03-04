@@ -103,7 +103,28 @@ void ofApp::update()
     {
         (it)->update(listener);
     }
+    keepListenerInside();
     listener.update();
+}
+
+void ofApp::keepListenerInside()
+{
+    if( listener.getPosition().x > ofGetWidth() )
+    {
+        listener.setPosition(ofVec2f(0,listener.getPosition().y));
+    }
+    else if( listener.getPosition().x < 0  )
+    {
+        listener.setPosition(ofVec2f(ofGetWidth(),listener.getPosition().y));
+    }
+    else if( listener.getPosition().y > ofGetHeight() )
+    {
+        listener.setPosition(ofVec2f(listener.getPosition().x,0));
+    }
+    else if( listener.getPosition().y < 0  )
+    {
+        listener.setPosition(ofVec2f(listener.getPosition().x,ofGetHeight()));
+    }
 }
 
 void ofApp::draw()

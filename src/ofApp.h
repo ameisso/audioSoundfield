@@ -13,6 +13,7 @@ public:
     void exit();
     void loadSettings();
     void update();
+    void keepListenerInside();
     void draw();
     void handleOSC();
     
