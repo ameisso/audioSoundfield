@@ -53,6 +53,7 @@ void ofApp::loadSettings()
         
         settings.pushTag("PARAMS");
         listener.setup(350, 500, 0, settings.getValue("listenerSmoothness", 0));
+        viewPortScale = settings.getValue("viewPortScale", 1.0);
         settings.popTag();
         settings.pushTag("IMAGE");
         string backgroundName = settings.getValue("backgroundName", "");
@@ -142,7 +143,7 @@ void ofApp::draw()
     }
     listener.drawImage();
     mapFbo.end();
-    ofVec2f drawSize = ofVec2f(400,300);
+    ofVec2f drawSize = ofVec2f(mapFbo.getWidth()*viewPortScale,mapFbo.getHeight()*viewPortScale);
     if( showMapMode )
     {
         mapFbo.draw(0 , 0, ofGetWidth(),ofGetHeight());// for map mode

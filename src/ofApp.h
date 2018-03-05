@@ -46,4 +46,5 @@ private:
     bool showListenerPosition = true;
     bool showSounds = false;
     bool showMapMode = false;
+    float viewPortScale;
 };

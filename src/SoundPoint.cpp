@@ -208,7 +208,6 @@ void SoundPoint::startPlaying()
 void AmbiantSoundPoint::setup(string aSoundPath,float aLoopRate, float aVolume)
 {
     SoundPoint::setup(0, 0, 100,aLoopRate, aSoundPath,false);
-    ofLog()<<" "<<aVolume;
     setVolume(aVolume);
 }
 
