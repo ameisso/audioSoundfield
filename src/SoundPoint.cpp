@@ -267,7 +267,7 @@ void SoundListener::drawImage()
     {
         ofPushMatrix();
         ofTranslate(getPosition().x,getPosition().y);
-        ofRotate(orientation);
+       // ofRotate(orientation);
         listenerImage.draw(0,0,listenerImage.getWidth()*listenerScale,listenerImage.getHeight()*listenerScale);
         ofPopMatrix();
     }
