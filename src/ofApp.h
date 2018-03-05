@@ -31,6 +31,7 @@ private:
     ofxOscSender oscSender;
     
     ofImage backgroundImage;
+    ofFbo mapFbo;
     
     vector<SoundPoint> soundPoints;
     vector<AmbiantSoundPoint> ambiantPoints;

@@ -62,7 +62,7 @@ void ofApp::loadSettings()
             if( backgroundImage.load(backgroundName) );
             {
                 backgroundImageLoaded = true;
-                backgroundImage.resize(ofGetScreenWidth(),ofGetScreenHeight());
+                mapFbo.allocate(backgroundImage.getWidth(),backgroundImage.getHeight(),GL_RGB);
             }
         }
         string cursorName = settings.getValue("cursorName", "");
@@ -121,12 +121,13 @@ void ofApp::keepListenerInside()
 
 void ofApp::draw()
 {
+    mapFbo.begin();
     ofBackground(50);
     ofSetColor(255);
     ofSetRectMode(OF_RECTMODE_CORNER);
     if( backgroundImageLoaded )
     {
-        backgroundImage.draw(0, 0, ofGetWidth(), ofGetHeight());
+        backgroundImage.draw(0,0);
     }
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofSetColor(255,255,0);
@@ -148,6 +149,8 @@ void ofApp::draw()
         ofSetColor(0);
         ofDrawBitmapString(ofToString(ofGetMouseX())+" "+ofToString(ofGetMouseY()), ofGetMouseX()+30, ofGetMouseY()+30);
     }
+    mapFbo.end();
+    mapFbo.getTexture().drawSubsection(0,0,ofGetScreenWidth(),ofGetScreenHeight(),listener.getPosition().x-400,listener.getPosition().y-300,800,600);
 }
 
 
