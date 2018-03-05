@@ -145,9 +145,9 @@ void ofApp::draw()
     }
     if(showMouse)
     {
-        ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 10);
         ofSetColor(0);
-        ofDrawBitmapString(ofToString(ofGetMouseX())+" "+ofToString(ofGetMouseY()), ofGetMouseX()+30, ofGetMouseY()+30);
+        ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 10);
+        ofDrawBitmapString(ofToString(ofGetMouseX())+" "+ofToString(ofGetMouseY()), ofGetMouseX()+20, ofGetMouseY());
     }
     mapFbo.end();
     mapFbo.getTexture().drawSubsection(0,0,ofGetScreenWidth(),ofGetScreenHeight(),listener.getPosition().x-400,listener.getPosition().y-300,800,600);
