@@ -308,8 +308,8 @@ void ofApp::updatePosition(int x, int y)
 {
     listener.setPosition( ofVec2f(x,y) );
     ofxOscMessage m;
-    m.addIntArg(x);
-    m.addIntArg(y);
+    m.addIntArg(listener.getPosition().x);
+    m.addIntArg(listener.getPosition().y);
     m.setAddress("/listener/position");
     oscSender.sendMessage(m);
 }
