@@ -101,27 +101,28 @@ void ofApp::update()
 
 void ofApp::keepListenerInside()
 {
-    if( listener.getPosition().x > ofGetWidth() )
+    if( listener.getPosition().x > mapFbo.getWidth() )
     {
         listener.setPosition(ofVec2f(0,listener.getPosition().y));
     }
     else if( listener.getPosition().x < 0  )
     {
-        listener.setPosition(ofVec2f(ofGetWidth(),listener.getPosition().y));
+        listener.setPosition(ofVec2f(mapFbo.getWidth(),listener.getPosition().y));
     }
-    else if( listener.getPosition().y > ofGetHeight() )
+    else if( listener.getPosition().y >  mapFbo.getHeight() )
     {
         listener.setPosition(ofVec2f(listener.getPosition().x,0));
     }
     else if( listener.getPosition().y < 0  )
     {
-        listener.setPosition(ofVec2f(listener.getPosition().x,ofGetHeight()));
+        listener.setPosition(ofVec2f(listener.getPosition().x,mapFbo.getHeight()));
     }
 }
 
 void ofApp::draw()
 {
     ofSetColor(255);
+    
     mapFbo.begin();
     ofBackground(50);
     ofSetColor(255);
@@ -140,13 +141,17 @@ void ofApp::draw()
         }
     }
     listener.drawImage();
-    if(showSounds)
-    {
-        listener.drawCursor();
-    }
     mapFbo.end();
     ofVec2f drawSize = ofVec2f(400,300);
-    mapFbo.getTexture().drawSubsection(0,0,ofGetWidth(),ofGetHeight(),listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
+    if( showMapMode )
+    {
+        mapFbo.draw(0 , 0, ofGetWidth(),ofGetHeight());// for map mode
+    }
+    else
+    {
+        mapFbo.getTexture().drawSubsection(0,0,ofGetWidth(),ofGetHeight(),listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
+    }
+    
     if(showListenerPosition)
     {
         ofSetColor(200);
@@ -259,6 +264,10 @@ void ofApp::keyPressed(int key)
     else if(key =='p')
     {
         showSounds = ! showSounds;
+    }
+    else if(key =='m')
+    {
+        showMapMode = ! showMapMode;
     }
     
 }

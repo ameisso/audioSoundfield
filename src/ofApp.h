@@ -45,4 +45,5 @@ private:
     bool cursorImageLoaded = false;
     bool showListenerPosition = true;
     bool showSounds = false;
+    bool showMapMode = false;
 };
