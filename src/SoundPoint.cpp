@@ -268,7 +268,7 @@ void SoundListener::drawImage()
         ofPushMatrix();
         ofTranslate(getPosition().x,getPosition().y);
        // ofRotate(orientation);
-        listenerImage.draw(0,0,listenerImage.getWidth()*listenerScale,listenerImage.getHeight()*listenerScale);
+        listenerImage.draw(0,0,listenerImage.getWidth(),listenerImage.getHeight());
         ofPopMatrix();
     }
 }
@@ -305,5 +305,11 @@ void SoundListener::setImage(ofImage anImage, float scale)
 {
     listenerImage = anImage;
     listenerScale = scale;
+    listenerImage.resize(listenerImage.getWidth()*scale, listenerImage.getHeight()*scale);
     gotImage = true;
+}
+
+ofVec2f SoundListener::getImageSize()
+{
+    return ofVec2f(listenerImage.getWidth(), listenerImage.getHeight());
 }

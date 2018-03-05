@@ -89,6 +89,7 @@ public:
     void setWalkspeed( ofVec2f aWalkSpeed );
     ofVec2f getWalkSpeed();
     void setImage(ofImage anImage, float scale);
+    ofVec2f getImageSize();
     
 private:
     float orientation;

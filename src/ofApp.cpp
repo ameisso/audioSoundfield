@@ -101,21 +101,21 @@ void ofApp::update()
 
 void ofApp::keepListenerInside()
 {
-    if( listener.getPosition().x > mapFbo.getWidth() )
+    if( listener.getPosition().x > mapFbo.getWidth()-listener.getImageSize().x/2 )
     {
-        listener.setPosition(ofVec2f(0,listener.getPosition().y));
+        listener.setPosition(ofVec2f(listener.getImageSize().x/2,listener.getPosition().y));
     }
-    else if( listener.getPosition().x < 0  )
+    else if( listener.getPosition().x < listener.getImageSize().x/2  )
     {
-        listener.setPosition(ofVec2f(mapFbo.getWidth(),listener.getPosition().y));
+        listener.setPosition(ofVec2f(mapFbo.getWidth()-listener.getImageSize().x/2,listener.getPosition().y));
     }
-    else if( listener.getPosition().y >  mapFbo.getHeight() )
+    else if( listener.getPosition().y >  mapFbo.getHeight()-listener.getImageSize().y/2 )
     {
-        listener.setPosition(ofVec2f(listener.getPosition().x,0));
+        listener.setPosition(ofVec2f(listener.getPosition().x,listener.getImageSize().y/2));
     }
-    else if( listener.getPosition().y < 0  )
+    else if( listener.getPosition().y < listener.getImageSize().y/2  )
     {
-        listener.setPosition(ofVec2f(listener.getPosition().x,mapFbo.getHeight()));
+        listener.setPosition(ofVec2f(listener.getPosition().x,mapFbo.getHeight()-listener.getImageSize().y/2));
     }
 }
 
