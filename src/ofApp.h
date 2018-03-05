@@ -43,6 +43,6 @@ private:
     
     bool backgroundImageLoaded = false;
     bool cursorImageLoaded = false;
-    bool showMouse = false;
+    bool showListenerPosition = true;
     bool showSounds = false;
 };

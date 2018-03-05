@@ -121,6 +121,7 @@ void ofApp::keepListenerInside()
 
 void ofApp::draw()
 {
+    ofSetColor(255);
     mapFbo.begin();
     ofBackground(50);
     ofSetColor(255);
@@ -143,14 +144,16 @@ void ofApp::draw()
     {
         listener.drawCursor();
     }
-    if(showMouse)
-    {
-        ofSetColor(0);
-        ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 10);
-        ofDrawBitmapString(ofToString(ofGetMouseX())+" "+ofToString(ofGetMouseY()), ofGetMouseX()+20, ofGetMouseY());
-    }
     mapFbo.end();
-    mapFbo.getTexture().drawSubsection(0,0,ofGetScreenWidth(),ofGetScreenHeight(),listener.getPosition().x-400,listener.getPosition().y-300,800,600);
+    ofVec2f drawSize = ofVec2f(400,300);
+    mapFbo.getTexture().drawSubsection(0,0,ofGetWidth(),ofGetHeight(),listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
+    if(showListenerPosition)
+    {
+        ofSetColor(200);
+        ofDrawRectangle(0, 0, 200, 25);
+        ofSetColor(0);
+        ofDrawBitmapString("listener -> "+ofToString(listener.getPosition().x)+" "+ofToString(listener.getPosition().y), 15,15);
+    }
 }
 
 
@@ -251,7 +254,7 @@ void ofApp::keyPressed(int key)
     }
     else if(key =='i')
     {
-        showMouse = ! showMouse;
+        showListenerPosition = ! showListenerPosition;
     }
     else if(key =='p')
     {
