@@ -25,7 +25,7 @@ class ImagePoint : public ImageObject
 {
 public:
     
-    void setup(int posX, int posY, string aPath, bool isTrigerable);
+    void setup(int posX, int posY, string aPath, bool isTrigerable, float aScale);
     void update(ofVec2f listenerPosition);
     void draw();
     
@@ -41,6 +41,7 @@ private:
     bool trigerable;
     int currentGifFrameIndex;
     long lastFrameTime;
+    float scale;
 };
 
 

@@ -18,15 +18,16 @@ ofVec2f ImageObject::getPosition()
 
 
 //IMAGE POINT
-void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable)
+void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable, float aScale)
 {
     path = aPath;
     ImageObject::setup(posX, posY);
     trigerable = isTrigerable;
-#warning test if it ends in .gif
+    scale = aScale;
     if( path.find(".gif") != std::string::npos )
     {
         type = IMAGE_TYPE_GIF;
+        #warning test decoding and throw error
         gifDecoder.decode(path);
         gifFile = gifDecoder.getFile();
         currentGifFrameIndex = 0;
@@ -35,6 +36,7 @@ void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable)
     {
         type = IMAGE_TYPE_PNG;
         pngImage.load(path);
+        pngImage.resize(pngImage.getWidth()*scale, pngImage.getHeight()*scale);
     }
 }
 
@@ -62,7 +64,7 @@ void ImagePoint::draw()
     ofSetColor(255);
     if(type == IMAGE_TYPE_GIF)
     {
-        currentGifFrame->draw(getPosition().x , getPosition().y);
+        currentGifFrame->draw(getPosition().x , getPosition().y, currentGifFrame->getWidth()*scale, currentGifFrame->getHeight()*scale);
     }
     else
     {
