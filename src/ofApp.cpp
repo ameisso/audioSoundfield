@@ -288,12 +288,23 @@ void ofApp::keyReleased(int key)
 
 void ofApp::mousePressed(int x, int y , int button)
 {
-    listener.setPosition( ofVec2f(x,y) );
+    mouseDelta = ofVec2f(x,y);
+    if( showMapMode )
+    {
+        int mappedX = ofMap(x,0,ofGetWidth(),0,backgroundImage.getWidth());
+        int mappedY = ofMap(y,0,ofGetHeight(),0,backgroundImage.getHeight());
+        listener.setPosition(ofVec2f(mappedX,mappedY));
+    }
 }
 
 void ofApp::mouseDragged(int x, int y , int button)
 {
-    updatePosition(x,y);
+    if( ! showMapMode  )
+    {
+        ofVec2f delta = ofVec2f(mouseDelta.x-x,mouseDelta.y-y);
+        updatePosition(listener.getPosition().x+delta.x,listener.getPosition().y+delta.y);
+    }
+    mouseDelta = ofVec2f(x,y);
 }
 
 void ofApp::mouseMoved(int x, int y)

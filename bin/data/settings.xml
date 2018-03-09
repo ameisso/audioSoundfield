@@ -2,21 +2,21 @@
     <!--    <soundPoint>-->
     <!--        <params name="centralStation.wav" x="600" y="115" maxDistance="50" triggerable="1" />-->
     <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="chant.wav" x="717" y="241" maxDistance="150" />-->
-    <!--    </soundPoint>-->
+    <soundPoint>
+        <params name="chant.wav" x="165" y="277" maxDistance="150" />
+    </soundPoint>
     <!--    <soundPoint>-->
     <!--        <params name="danois.wav" x="500" y="300" maxDistance="100" />-->
     <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="eau.wav" x="374" y="94" maxDistance="130" />-->
-    <!--    </soundPoint>-->
+    <soundPoint>
+        <params name="eau.wav" x="374" y="94" maxDistance="500" />
+    </soundPoint>
     <!--    <soundPoint>-->
     <!--        <params name="repas femmes.wav" x="353" y="215" maxDistance="100" />-->
     <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="guard.wav" x="477" y="421" maxDistance="40" triggerable="1" />-->
-    <!--    </soundPoint>-->
+    <soundPoint>
+        <params name="guard.wav" x="550" y="244" maxDistance="40" triggerable="1" />
+    </soundPoint>
     <!--    <soundPoint>-->
     <!--        <params name="violon.wav" x="663" y="430" maxDistance="100"  />-->
     <!--    </soundPoint>-->
@@ -35,17 +35,27 @@
     <!--    <soundPoint>-->
     <!--        <params name="carillon.wav" x="95" y="361" maxDistance="80" triggerable="0" />-->
     <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="bateau.wav" x="151" y="112" maxDistance="180" triggerable="0" />-->
-    <!--    </soundPoint>-->
+    <soundPoint>
+        <params name="bateau.wav" x="450" y="244" maxDistance="50" triggerable="0" />
+    </soundPoint>
+    <soundPoint>
+        <params name="des.wav" x="1016" y="538" maxDistance="60" loopRate="5" triggerable="1" />
+    </soundPoint>
+    <soundPoint>
+        <params name="des.wav" x="441" y="756" maxDistance="60" loopRate="5" triggerable="1" />
+    </soundPoint>
+    <soundPoint>
+        <params name="ambiance_bar.wav" x="1016" y="538" maxDistance="200" />
+    </soundPoint>
 </soundPoints>
 <ambiantSounds>
-    <!--    <ambiantSound>-->
-    <!--        <params name="train1.wav" loopRate="2" volume="0.1"/>-->
-    <!--    </ambiantSound>-->
+    <ambiantSound>
+        <params name="ambiance_bar.wav" loopRate="30" volume="0.1"/>
+    </ambiantSound>
 </ambiantSounds>
 <PARAMS>
-    <listenerSmoothness>20</listenerSmoothness>
+    <listenerSmoothness>10</listenerSmoothness>
+    <viewPortScale>0.3</viewPortScale>
 </PARAMS>
 <OSC>
     <inputPort>8000</inputPort>
@@ -53,7 +63,7 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <backgroundName>bg.png</backgroundName>
+    <backgroundName>bg.jpg</backgroundName>
     <cursorName>listener.png</cursorName>
-    <cursorScale>0.07</cursorScale>
+    <cursorScale>0.1</cursorScale>
 </IMAGE>

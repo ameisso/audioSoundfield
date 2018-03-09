@@ -47,4 +47,6 @@ private:
     bool showSounds = false;
     bool showMapMode = false;
     float viewPortScale;
+    
+    ofVec2f mouseDelta; 
 };
