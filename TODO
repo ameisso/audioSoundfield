@@ -1,7 +1,11 @@
 - moving sound point (from vezer export)
 - infinite map (listener is fix and sound moves around him) 
 - sounds that stay at a position from the listener 
-- osc moves soundPoints + volume 
+- osc moves soundPoints + volume
 
-- left to right
-- hide sound points
+----
+- bulles images
+- volume sur les sons
+- doc
+- personnages qui changent
+- pourquoi on est flou ?

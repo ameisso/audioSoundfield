@@ -175,9 +175,22 @@ void ofApp::draw()
     if(showListenerPosition)
     {
         ofSetColor(200);
+        
         ofDrawRectangle(0, 0, 200, 25);
         ofSetColor(0);
         ofDrawBitmapString("listener -> "+ofToString(listener.getPosition().x)+" "+ofToString(listener.getPosition().y), 15,15);
+        int offset = 25;
+        for(vector<AmbiantSoundPoint>::iterator it = ambiantPoints.begin(); it != ambiantPoints.end(); ++it)
+        {
+            if(   it->getIsPlaying() )
+            {
+                offset += 25;
+                ofSetColor(100);
+                ofDrawRectangle(0, offset-25, 500, 25);
+                ofSetColor(0);
+                ofDrawBitmapString("ambiant -> "+it->getPath(), 15,offset-10);
+            }
+        }
     }
 }
 

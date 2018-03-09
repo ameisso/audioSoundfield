@@ -56,7 +56,6 @@ void ImagePoint::update(ofVec2f listenerPosition)
             }
         }
     }
-    
 }
 
 void ImagePoint::draw()

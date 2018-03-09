@@ -7,6 +7,9 @@
 
 #define IMAGE_TYPE_GIF 0
 #define IMAGE_TYPE_PNG 1
+
+
+
 class ImageObject
 {
     
@@ -20,6 +23,10 @@ public:
 private:
     ofVec2f position;
 };
+
+
+
+
 
 class ImagePoint : public ImageObject
 {

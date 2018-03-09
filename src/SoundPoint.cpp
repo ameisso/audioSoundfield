@@ -200,8 +200,15 @@ void SoundPoint::startPlaying()
     soundPlayer.play();
 }
 
+bool SoundPoint::getIsPlaying()
+{
+    return soundPlayer.isPlaying();
+}
 
-
+string SoundPoint::getPath()
+{
+    return soundPath;
+}
 
 
 //AMBIANT SOUND POINT
@@ -215,7 +222,6 @@ void AmbiantSoundPoint::draw()
 {
     
 }
-
 
 
 

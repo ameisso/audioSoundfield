@@ -1,40 +1,13 @@
 <soundPoints>
-    <!--    <soundPoint>-->
-    <!--        <params name="centralStation.wav" x="600" y="115" maxDistance="50" triggerable="1" />-->
-    <!--    </soundPoint>-->
     <soundPoint>
         <params name="chant.wav" x="165" y="277" maxDistance="150" />
     </soundPoint>
-    <!--    <soundPoint>-->
-    <!--        <params name="danois.wav" x="500" y="300" maxDistance="100" />-->
-    <!--    </soundPoint>-->
     <soundPoint>
         <params name="eau.wav" x="374" y="94" maxDistance="500" />
     </soundPoint>
-    <!--    <soundPoint>-->
-    <!--        <params name="repas femmes.wav" x="353" y="215" maxDistance="100" />-->
-    <!--    </soundPoint>-->
     <soundPoint>
         <params name="guard.wav" x="550" y="244" maxDistance="40" triggerable="1" />
     </soundPoint>
-    <!--    <soundPoint>-->
-    <!--        <params name="violon.wav" x="663" y="430" maxDistance="100"  />-->
-    <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="grandmere.wav" x="301" y="354" maxDistance="80" loopRate="3" />-->
-    <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="enfant1.wav" x="375" y="356" maxDistance="60" triggerable="1" />-->
-    <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="enfant2.wav" x="219" y="352" maxDistance="200" loopRate="5" />-->
-    <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="enfant3.wav" x="245" y="274" maxDistance="40" triggerable="1" />-->
-    <!--    </soundPoint>-->
-    <!--    <soundPoint>-->
-    <!--        <params name="carillon.wav" x="95" y="361" maxDistance="80" triggerable="0" />-->
-    <!--    </soundPoint>-->
     <soundPoint>
         <params name="bateau.wav" x="450" y="244" maxDistance="50" triggerable="0" />
     </soundPoint>

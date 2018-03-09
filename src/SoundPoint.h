@@ -35,7 +35,8 @@ public:
     void update(SoundListener listener);
     void setVolume(float aVolume);
     void draw();
-    
+    bool getIsPlaying();
+    string getPath();
 private:
     
     float volume;
