@@ -24,7 +24,7 @@ void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable)
     ImageObject::setup(posX, posY);
     trigerable = isTrigerable;
 #warning test if it ends in .gif
-    if(true)
+    if( path.find(".gif") != std::string::npos )
     {
         type = IMAGE_TYPE_GIF;
         gifDecoder.decode(path);
@@ -34,6 +34,7 @@ void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable)
     else
     {
         type = IMAGE_TYPE_PNG;
+        pngImage.load(path);
     }
 }
 
@@ -53,10 +54,18 @@ void ImagePoint::update(ofVec2f listenerPosition)
             }
         }
     }
+    
 }
 
 void ImagePoint::draw()
 {
     ofSetColor(255);
-    currentGifFrame->draw(getPosition().x , getPosition().y);
+    if(type == IMAGE_TYPE_GIF)
+    {
+        currentGifFrame->draw(getPosition().x , getPosition().y);
+    }
+    else
+    {
+        pngImage.draw(getPosition().x , getPosition().y);
+    }
 }

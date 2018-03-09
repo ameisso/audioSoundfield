@@ -54,11 +54,17 @@
     </ambiantSound>
 </ambiantSounds>
 <imagePoints>
-<!--    <imagePoint>-->
-<!--        <params name="aiko2.gif" x="450" y="300" triggerable="1"/>-->
-<!--    </imagePoint>-->
+    <imagePoint>
+        <params name="aiko2.gif" x="450" y="800" triggerable="1"/>
+    </imagePoint>
     <imagePoint>
         <params name="sunset.gif" x="1700" y="310" triggerable="1"/>
+    </imagePoint>
+    <imagePoint>
+        <params name="lego2.jpg" x="2000" y="1500" triggerable="1"/>
+    </imagePoint>
+    <imagePoint>
+        <params name="cube.png" x="200" y="550" triggerable="1"/>
     </imagePoint>
 </imagePoints>
 <PARAMS>
