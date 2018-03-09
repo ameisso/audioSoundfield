@@ -4,7 +4,8 @@
 #include "SoundPoint.h"
 #include "ofxXmlSettings.h"
 #include "ofxOSC.h"
-#include "ofxSvg.h"
+#include "ImagePoint.h"
+
 
 class ofApp : public ofBaseApp{
     
@@ -35,6 +36,7 @@ private:
     
     vector<SoundPoint> soundPoints;
     vector<AmbiantSoundPoint> ambiantPoints;
+    vector<ImagePoint> imagePoints;
     
     bool isMovingWithMouse;
     

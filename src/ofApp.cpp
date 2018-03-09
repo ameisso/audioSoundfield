@@ -19,6 +19,7 @@ void ofApp::loadSettings()
 {
     soundPoints.clear();
     ambiantPoints.clear();
+    imagePoints.clear();
     
     if(settings.loadFile("settings.xml"))
     {
@@ -41,6 +42,16 @@ void ofApp::loadSettings()
             AmbiantSoundPoint a;
             a.setup(settings.getAttribute("params", "name", ""), settings.getAttribute("params", "loopRate", 0.0), settings.getAttribute("params", "volume", 0.0));
             ambiantPoints.push_back(a);
+            settings.popTag();
+        }
+        settings.popTag();
+        settings.pushTag("imagePoints");
+        for(int i = 0; i < settings.getNumTags("imagePoint"); i++)
+        {
+            settings.pushTag("imagePoint", i);
+            ImagePoint point;
+            point.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0),settings.getAttribute("params", "name", ""), settings.getAttribute("params", "triggerable", 0));
+            imagePoints.push_back(point);
             settings.popTag();
         }
         settings.popTag();
@@ -96,6 +107,10 @@ void ofApp::update()
     {
         (it)->update(listener);
     }
+    for(vector<ImagePoint>::iterator it = imagePoints.begin(); it != imagePoints.end(); ++it)
+    {
+        (it)->update(listener.getPosition());
+    }
     keepListenerInside();
     listener.update();
 }
@@ -133,6 +148,10 @@ void ofApp::draw()
         backgroundImage.draw(0,0);
     }
     ofSetRectMode(OF_RECTMODE_CENTER);
+    for(vector<ImagePoint>::iterator it = imagePoints.begin(); it != imagePoints.end(); ++it)
+    {
+        it->draw();
+    }
     ofSetColor(255,255,0);
     if( showSounds )
     {

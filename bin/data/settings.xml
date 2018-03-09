@@ -53,6 +53,14 @@
         <params name="ambiance_bar.wav" loopRate="30" volume="0.1"/>
     </ambiantSound>
 </ambiantSounds>
+<imagePoints>
+<!--    <imagePoint>-->
+<!--        <params name="aiko2.gif" x="450" y="300" triggerable="1"/>-->
+<!--    </imagePoint>-->
+    <imagePoint>
+        <params name="sunset.gif" x="500" y="500" triggerable="1"/>
+    </imagePoint>
+</imagePoints>
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
     <viewPortScale>0.3</viewPortScale>

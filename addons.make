@@ -1,3 +1,4 @@
+ofxGifDecoder
 ofxGui
 ofxMidi
 ofxNetwork
