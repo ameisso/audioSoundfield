@@ -35,6 +35,7 @@ private:
     ofxGifDecoder gifDecoder;
     ofxGifFile gifFile;
     ofxGifFrame *currentGifFrame;
+    float gifFrameDuration = 0;
     
     string path;
     bool trigerable;

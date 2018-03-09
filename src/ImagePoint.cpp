@@ -41,12 +41,12 @@ void ImagePoint::update(ofVec2f listenerPosition)
 {
     if(type == IMAGE_TYPE_GIF)
     {
-        float duration = currentGifFrame->getDuration();
-        if( ofGetElapsedTimeMillis()-lastFrameTime > duration*1000 )
+        if( ofGetElapsedTimeMillis()-lastFrameTime > gifFrameDuration )
         {
             currentGifFrame = gifFile.getFrameAt(currentGifFrameIndex);
             lastFrameTime = ofGetElapsedTimeMillis();
             currentGifFrameIndex++;
+            gifFrameDuration = currentGifFrame->getDuration()*1000;
             if( currentGifFrameIndex == gifFile.getNumFrames() )
             {
                 currentGifFrameIndex = 0;
