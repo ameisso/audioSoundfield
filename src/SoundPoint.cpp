@@ -291,7 +291,7 @@ float SoundListener::getOrientation()
 
 void SoundListener::setWalkspeed(ofVec2f aWalkspeed)
 {
-    walkSpeed = aWalkspeed;
+    walkSpeed = ofVec2f(fmin(aWalkspeed.x,LISTENER_MAX_SPEED), fmin(aWalkspeed.y,LISTENER_MAX_SPEED));
 }
 
 ofVec2f SoundListener::getWalkSpeed()

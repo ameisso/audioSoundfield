@@ -1,14 +1,9 @@
-//
-//  SoundPoint.hpp
-//  soundfield
-//
-//  Created by Antoine on 14/08/2016.
-//
-//
 #pragma once
 #include "ofMain.h"
 #include "RingBuffer.h"
 
+
+#define LISTENER_MAX_SPEED 10
 class SoundListener;
 
 class SoundObject
