@@ -20,29 +20,36 @@ ofVec2f ImageObject::getPosition()
 //IMAGE POINT
 void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable, float aScale)
 {
-    path = aPath;
+    path = "images/"+aPath;
     ImageObject::setup(posX, posY);
     trigerable = isTrigerable;
     scale = aScale;
     if( path.find(".gif") != std::string::npos )
     {
         type = IMAGE_TYPE_GIF;
-        #warning test decoding and throw error
+#warning test decoding and throw error
         gifDecoder.decode(path);
+        if( gifDecoder.decode(path) )
+        {
+            imageLoaded = true;
+        }
         gifFile = gifDecoder.getFile();
         currentGifFrameIndex = 0;
     }
     else
     {
         type = IMAGE_TYPE_PNG;
-        pngImage.load(path);
+        if( pngImage.load(path) )
+        {
+            imageLoaded = true;
+        }
         pngImage.resize(pngImage.getWidth()*scale, pngImage.getHeight()*scale);
     }
 }
 
 void ImagePoint::update(ofVec2f listenerPosition)
 {
-    if(type == IMAGE_TYPE_GIF)
+    if( type == IMAGE_TYPE_GIF && imageLoaded )
     {
         if( ofGetElapsedTimeMillis()-lastFrameTime > gifFrameDuration )
         {
@@ -61,12 +68,15 @@ void ImagePoint::update(ofVec2f listenerPosition)
 void ImagePoint::draw()
 {
     ofSetColor(255);
-    if(type == IMAGE_TYPE_GIF)
+    if( imageLoaded )
     {
-        currentGifFrame->draw(getPosition().x , getPosition().y, currentGifFrame->getWidth()*scale, currentGifFrame->getHeight()*scale);
-    }
-    else
-    {
-        pngImage.draw(getPosition().x , getPosition().y);
+        if(type == IMAGE_TYPE_GIF)
+        {
+            currentGifFrame->draw(getPosition().x , getPosition().y, currentGifFrame->getWidth()*scale, currentGifFrame->getHeight()*scale);
+        }
+        else
+        {
+            pngImage.draw(getPosition().x , getPosition().y);
+        }
     }
 }

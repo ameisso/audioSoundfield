@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F2AFDA05152666051FE346584103F86BE2C7E47E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F2AFDA05152666051FE346584103F86BE2C7E47E" : 9223372036854775807,
+    "B369B44E452F469C835B00A91875BF1736AFFF69" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EE089B33-B49C-4719-AE55-727F28F37E84",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F2AFDA05152666051FE346584103F86BE2C7E47E" : "audioSoundField\/",
+    "B369B44E452F469C835B00A91875BF1736AFFF69" : "..\/..\/addons\/ofxGifDecoder"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "audioSoundField",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "audioSoundField.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ameisso\/ofxGifDecoder.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B369B44E452F469C835B00A91875BF1736AFFF69"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ameisso\/audioSoundfield.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2AFDA05152666051FE346584103F86BE2C7E47E"
+    }
+  ]
+}

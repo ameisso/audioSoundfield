@@ -49,6 +49,7 @@ private:
     int currentGifFrameIndex;
     long lastFrameTime;
     float scale;
+    bool imageLoaded = false;
 };
 
 

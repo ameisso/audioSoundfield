@@ -548,8 +548,8 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				6143429B53ED546CE99C517A /* RingBuffer.cpp */,
 				D400C00C05B23630A16B5416 /* RingBuffer.h */,
 				74337841E4E323B7B35B214E /* SoundPoint.h */,
