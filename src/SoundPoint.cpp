@@ -62,9 +62,12 @@ void SoundPoint::setup(int posX, int posY, int aMaxDistance, float aLoopRate, st
     SoundObject::setup(posX, posY);
     maxDistance = aMaxDistance;
     loopRate = aLoopRate;
-    soundPath = aSoundPath;
+    soundPath = "sounds/"+aSoundPath;
     trigerable = isTrigerable;
-    soundPlayer.load(soundPath);
+    if( ! soundPlayer.load(soundPath) )
+    {
+        ofLog()<<"error sound "<<soundPath<< " doesn't exist";
+    }
     if(loopRate == 0 && ! trigerable)
     {
         soundPlayer.setLoop(true);

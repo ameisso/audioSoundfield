@@ -31,7 +31,6 @@ private:
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
     
-    ofImage backgroundImage;
     ofFbo mapFbo;
     
     vector<SoundPoint> soundPoints;
@@ -43,7 +42,6 @@ private:
     void updatePosition(int x, int y);
     bool fileExists(string name);
     
-    bool backgroundImageLoaded = false;
     bool cursorImageLoaded = false;
     bool showListenerPosition = true;
     bool showSounds = false;

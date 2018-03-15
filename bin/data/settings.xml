@@ -28,17 +28,20 @@
 </ambiantSounds>
 <imagePoints>
     <imagePoint>
-        <params name="aiko2.gif" x="450" y="800" triggerable="1" scale="0.5"/>
+        <params name="bg.jpg" x="2500" y="2500" triggerable="1" scale="1.0"/>
     </imagePoint>
     <imagePoint>
-        <params name="sunset.gif" x="1700" y="310" triggerable="1" scale="0.5"/>
+        <params name="fish2.gif" x="450" y="800" triggerable="1" scale="0.5"/>
     </imagePoint>
     <imagePoint>
-        <params name="lego2.jpg" x="2000" y="1500" triggerable="1" scale="0.5"/>
+        <params name="sunset.gif" x="1700" y="310" triggerable="1" scale="1.3"/>
     </imagePoint>
-    <imagePoint>
-        <params name="cube.png" x="2300" y="550" triggerable="1" scale="0.5"/>
-    </imagePoint>
+<!--    <imagePoint>-->
+<!--        <params name="lego2.jpg" x="2000" y="1500" triggerable="1" scale="0.5"/>-->
+<!--    </imagePoint>-->
+<!--    <imagePoint>-->
+<!--        <params name="cube.png" x="2300" y="550" triggerable="1" scale="0.5"/>-->
+<!--    </imagePoint>-->
 </imagePoints>
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
@@ -50,7 +53,6 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <backgroundName>bg.jpg</backgroundName>
     <cursorName>listener.png</cursorName>
     <cursorScale>0.1</cursorScale>
 </IMAGE>

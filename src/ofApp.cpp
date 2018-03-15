@@ -28,9 +28,9 @@ void ofApp::loadSettings()
         for(int i = 0; i < numberOfSavedPoints; i++)
         {
             settings.pushTag("soundPoint", i);
-            SoundPoint p;
-            p.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0), settings.getAttribute("params", "maxDistance", 0.0), settings.getAttribute("params", "loopRate", 0.0) , settings.getAttribute("params", "name", ""),  settings.getAttribute("params", "triggerable", 0));
-            soundPoints.push_back(p);
+            SoundPoint soundPoint;
+            soundPoint.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0), settings.getAttribute("params", "maxDistance", 0.0), settings.getAttribute("params", "loopRate", 0.0) , settings.getAttribute("params", "name", ""),  settings.getAttribute("params", "triggerable", 0));
+            soundPoints.push_back(soundPoint);
             settings.popTag();
         }
         settings.popTag();
@@ -39,9 +39,9 @@ void ofApp::loadSettings()
         for(int i = 0; i < settings.getNumTags("ambiantSound"); i++)
         {
             settings.pushTag("ambiantSound", i);
-            AmbiantSoundPoint a;
-            a.setup(settings.getAttribute("params", "name", ""), settings.getAttribute("params", "loopRate", 0.0), settings.getAttribute("params", "volume", 0.0));
-            ambiantPoints.push_back(a);
+            AmbiantSoundPoint ambiantSoundPoint;
+            ambiantSoundPoint.setup(settings.getAttribute("params", "name", ""), settings.getAttribute("params", "loopRate", 0.0), settings.getAttribute("params", "volume", 0.0));
+            ambiantPoints.push_back(ambiantSoundPoint);
             settings.popTag();
         }
         settings.popTag();
@@ -67,25 +67,13 @@ void ofApp::loadSettings()
         viewPortScale = settings.getValue("viewPortScale", 1.0);
         settings.popTag();
         settings.pushTag("IMAGE");
-        string backgroundName = settings.getValue("backgroundName", "");
-        bool pngExists = fileExists(backgroundName);
-        if( pngExists )
+#warning parametric map size
+        mapFbo.allocate(5000,5000,GL_RGB);
+        string cursorName = "images/"+settings.getValue("cursorName", "");
+        ofImage listenerImage;
+        if( listenerImage.load(cursorName) );
         {
-            if( backgroundImage.load(backgroundName) );
-            {
-                backgroundImageLoaded = true;
-                mapFbo.allocate(backgroundImage.getWidth(),backgroundImage.getHeight(),GL_RGB);
-            }
-        }
-        string cursorName = settings.getValue("cursorName", "");
-        pngExists = fileExists(cursorName);
-        if( pngExists )
-        {
-            ofImage listenerImage;
-            if( listenerImage.load(cursorName) );
-            {
-                listener.setImage(listenerImage, settings.getValue("cursorScale", 1.0));
-            }
+            listener.setImage(listenerImage, settings.getValue("cursorScale", 1.0));
         }
         settings.popTag();
     }
@@ -142,11 +130,6 @@ void ofApp::draw()
     mapFbo.begin();
     ofBackground(50);
     ofSetColor(255);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    if( backgroundImageLoaded )
-    {
-        backgroundImage.draw(0,0);
-    }
     ofSetRectMode(OF_RECTMODE_CENTER);
     for(vector<ImagePoint>::iterator it = imagePoints.begin(); it != imagePoints.end(); ++it)
     {
@@ -323,8 +306,8 @@ void ofApp::mousePressed(int x, int y , int button)
     mouseDelta = ofVec2f(x,y);
     if( showMapMode )
     {
-        int mappedX = ofMap(x,0,ofGetWidth(),0,backgroundImage.getWidth());
-        int mappedY = ofMap(y,0,ofGetHeight(),0,backgroundImage.getHeight());
+        int mappedX = ofMap(x,0,ofGetWidth(),0,mapFbo.getWidth());
+        int mappedY = ofMap(y,0,ofGetHeight(),0,mapFbo.getHeight());
         listener.setPosition(ofVec2f(mappedX,mappedY));
     }
 }
