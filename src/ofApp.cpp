@@ -127,7 +127,7 @@ void ofApp::draw()
     ofSetColor(255);
     
     mapFbo.begin();
-    ofBackground(50);
+    ofBackground(100);
     ofSetColor(255);
     ofSetRectMode(OF_RECTMODE_CENTER);
     for(vector<ImagePoint>::iterator it = imagePoints.begin(); it != imagePoints.end(); ++it)
@@ -145,13 +145,18 @@ void ofApp::draw()
     listener.drawImage();
     mapFbo.end();
     ofVec2f drawSize = ofVec2f(mapFbo.getWidth()*viewPortScale,mapFbo.getHeight()*viewPortScale);
+    
+    ofRectangle projectionRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     if( showMapMode )
     {
-        mapFbo.draw(0 , 0, ofGetWidth(),ofGetHeight());// for map mode
+        ofRectangle rect = getCenteredRectForContainer(ofVec2f(mapFbo.getWidth(), mapFbo.getHeight()), projectionRect,false);
+        mapFbo.draw(rect);// for map mode
     }
     else
     {
-        mapFbo.getTexture().drawSubsection(0,0,ofGetWidth(),ofGetHeight(),listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
+        ofRectangle rect = getCenteredRectForContainer(ofVec2f(mapFbo.getWidth(), mapFbo.getHeight()), projectionRect, true);
+        float offset = (ofGetWidth()-rect.width)/2;
+        mapFbo.getTexture().drawSubsection(offset,0,rect.width,rect.height,listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
     }
     
     if(showListenerPosition)
@@ -174,6 +179,22 @@ void ofApp::draw()
             }
         }
     }
+}
+
+ofRectangle ofApp::getCenteredRectForContainer(ofVec2f size, ofRectangle container, bool fill)
+{
+    float scale = fmin(container.width/size.x, container.height/size.y);
+    if( fill )
+    {
+       scale = fmax(container.width/size.x, container.height/size.y);
+    }
+    ofRectangle scaledRect;
+    scaledRect.width = size.x*scale;
+    scaledRect.height = size.y*scale;
+    
+    scaledRect.x = container.x + (container.width-scaledRect.width)/2;
+    scaledRect.y = container.y + (container.height-scaledRect.height)/2;
+    return scaledRect;
 }
 
 

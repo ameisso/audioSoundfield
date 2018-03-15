@@ -38,7 +38,7 @@ private:
     vector<ImagePoint> imagePoints;
     
     bool isMovingWithMouse;
-    
+    ofRectangle getCenteredRectForContainer(ofVec2f size, ofRectangle container, bool fill);
     void updatePosition(int x, int y);
     bool fileExists(string name);
     
