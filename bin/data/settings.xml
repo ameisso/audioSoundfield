@@ -28,7 +28,7 @@
 </ambiantSounds>
 <imagePoints>
     <imagePoint>
-        <params name="bg.jpg" x="2500" y="2500" triggerable="1" scale="1.0"/>
+        <params name="bg.jpg" x="1440" y="900" scale="1.0"/>
     </imagePoint>
     <imagePoint>
         <params name="fish2.gif" x="450" y="800" triggerable="1" scale="0.5"/>
@@ -46,6 +46,7 @@
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
     <viewPortScale>0.3</viewPortScale>
+    <mapsize x="2880" y="1800"/>
 </PARAMS>
 <OSC>
     <inputPort>8000</inputPort>

@@ -1,11 +1,3 @@
-//
-//  SoundPoint.cpp
-//  soundfield
-//
-//  Created by Antoine on 14/08/2016.
-//
-//
-
 #include "SoundPoint.h"
 
 //SOUND OBJECT

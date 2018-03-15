@@ -65,10 +65,9 @@ void ofApp::loadSettings()
         settings.pushTag("PARAMS");
         listener.setup(350, 500, 0, settings.getValue("listenerSmoothness", 0));
         viewPortScale = settings.getValue("viewPortScale", 1.0);
+        mapFbo.allocate(settings.getAttribute("mapsize","x", 200),settings.getAttribute("mapsize","y", 200),GL_RGB);
         settings.popTag();
         settings.pushTag("IMAGE");
-#warning parametric map size
-        mapFbo.allocate(5000,5000,GL_RGB);
         string cursorName = "images/"+settings.getValue("cursorName", "");
         ofImage listenerImage;
         if( listenerImage.load(cursorName) );
