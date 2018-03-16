@@ -28,7 +28,7 @@
 </ambiantSounds>
 <imagePoints>
     <imagePoint>
-        <params name="bg.jpg" x="1440" y="900" scale="1.0"/>
+        <params name="cube.png" x="150" y="150" scale="1.0"/>
     </imagePoint>
     <imagePoint>
         <params name="fish2.gif" x="450" y="800" triggerable="1" scale="0.5"/>
@@ -46,7 +46,8 @@
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
     <viewPortWidth>500</viewPortWidth>
-    <mapsize x="10000" y="10000"/>
+    <mapsize x="5000" y="10000"/>
+    <listenerOrigin x="300" y="300"/>
 </PARAMS>
 <OSC>
     <inputPort>8000</inputPort>
@@ -54,6 +55,6 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <cursorName>listener.png</cursorName>
+    <cursorName>cube.png</cursorName>
     <cursorScale>0.1</cursorScale>
 </IMAGE>

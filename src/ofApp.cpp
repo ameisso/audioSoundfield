@@ -143,7 +143,8 @@ void ofApp::draw()
     }
     listener.drawImage();
     mapFbo.end();
-    ofVec2f drawSize = ofVec2f(viewPortWidth,mapFbo.getHeight()/mapFbo.getWidth()*viewPortWidth);
+       float screenRatio = (float)ofGetHeight()/(float)ofGetWidth();
+        ofVec2f drawSize = ofVec2f(viewPortWidth,screenRatio*viewPortWidth);
     ofRectangle projectionRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     if( showMapMode )
     {
@@ -152,9 +153,8 @@ void ofApp::draw()
     }
     else
     {
-        ofRectangle rect = getCenteredRectForContainer(ofVec2f(mapFbo.getWidth(), mapFbo.getHeight()), projectionRect, true);
-        float offset = (ofGetWidth()-rect.width)/2;
-        mapFbo.getTexture().drawSubsection(offset,0,rect.width,rect.height,listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
+        ofRectangle rect = getCenteredRectForContainer(ofVec2f(ofGetWidth(),ofGetHeight()), projectionRect, true);
+        mapFbo.getTexture().drawSubsection(0,0,rect.width,rect.height,listener.getPosition().x-drawSize.x/2,listener.getPosition().y-drawSize.y/2,drawSize.x,drawSize.y);
     }
     
     if(showListenerPosition)
