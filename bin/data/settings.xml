@@ -45,8 +45,8 @@
 </imagePoints>
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
-    <viewPortScale>0.3</viewPortScale>
-    <mapsize x="2880" y="1800"/>
+    <viewPortWidth>500</viewPortWidth>
+    <mapsize x="10000" y="10000"/>
 </PARAMS>
 <OSC>
     <inputPort>8000</inputPort>

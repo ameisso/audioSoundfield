@@ -64,7 +64,7 @@ void ofApp::loadSettings()
         
         settings.pushTag("PARAMS");
         listener.setup(350, 500, 0, settings.getValue("listenerSmoothness", 0));
-        viewPortScale = settings.getValue("viewPortScale", 1.0);
+        viewPortWidth = settings.getValue("viewPortWidth", 200);
         mapFbo.allocate(settings.getAttribute("mapsize","x", 200),settings.getAttribute("mapsize","y", 200),GL_RGB);
         settings.popTag();
         settings.pushTag("IMAGE");
@@ -125,7 +125,6 @@ void ofApp::keepListenerInside()
 void ofApp::draw()
 {
     ofSetColor(255);
-    
     mapFbo.begin();
     ofBackground(100);
     ofSetColor(255);
@@ -144,8 +143,7 @@ void ofApp::draw()
     }
     listener.drawImage();
     mapFbo.end();
-    ofVec2f drawSize = ofVec2f(mapFbo.getWidth()*viewPortScale,mapFbo.getHeight()*viewPortScale);
-    
+    ofVec2f drawSize = ofVec2f(viewPortWidth,mapFbo.getHeight()/mapFbo.getWidth()*viewPortWidth);
     ofRectangle projectionRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     if( showMapMode )
     {
@@ -162,7 +160,6 @@ void ofApp::draw()
     if(showListenerPosition)
     {
         ofSetColor(200);
-        
         ofDrawRectangle(0, 0, 200, 25);
         ofSetColor(0);
         ofDrawBitmapString("listener -> "+ofToString(listener.getPosition().x)+" "+ofToString(listener.getPosition().y), 15,15);

@@ -46,7 +46,7 @@ private:
     bool showListenerPosition = true;
     bool showSounds = false;
     bool showMapMode = false;
-    float viewPortScale;
+    float viewPortWidth;
     
     ofVec2f mouseDelta; 
 };
