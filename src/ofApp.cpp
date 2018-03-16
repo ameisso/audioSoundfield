@@ -63,7 +63,7 @@ void ofApp::loadSettings()
         settings.popTag();
         
         settings.pushTag("PARAMS");
-        listener.setup(350, 500, 0, settings.getValue("listenerSmoothness", 0));
+        listener.setup(settings.getAttribute("listenerOrigin", "x",350), settings.getAttribute("listenerOrigin", "y", 500), settings.getValue("listenerSmoothness", 0));
         viewPortWidth = settings.getValue("viewPortWidth", 200);
         mapFbo.allocate(settings.getAttribute("mapsize","x", 200),settings.getAttribute("mapsize","y", 200),GL_RGB);
         settings.popTag();
@@ -188,7 +188,6 @@ ofRectangle ofApp::getCenteredRectForContainer(ofVec2f size, ofRectangle contain
     ofRectangle scaledRect;
     scaledRect.width = size.x*scale;
     scaledRect.height = size.y*scale;
-    
     scaledRect.x = container.x + (container.width-scaledRect.width)/2;
     scaledRect.y = container.y + (container.height-scaledRect.height)/2;
     return scaledRect;
