@@ -55,6 +55,6 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <cursorName>cube.png</cursorName>
-    <cursorScale>0.1</cursorScale>
+    <cursorName>listener.png</cursorName>
+    <cursorScale>0.05</cursorScale>
 </IMAGE>
