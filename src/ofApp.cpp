@@ -21,6 +21,7 @@ void ofApp::loadSettings()
     ambiantPoints.clear();
     imagePoints.clear();
     
+    ofSetDataPathRoot("../Resources");
     if(settings.loadFile("settings.xml"))
     {
         settings.pushTag("soundPoints");
@@ -143,8 +144,8 @@ void ofApp::draw()
     }
     listener.drawImage();
     mapFbo.end();
-       float screenRatio = (float)ofGetHeight()/(float)ofGetWidth();
-        ofVec2f drawSize = ofVec2f(viewPortWidth,screenRatio*viewPortWidth);
+    float screenRatio = (float)ofGetHeight()/(float)ofGetWidth();
+    ofVec2f drawSize = ofVec2f(viewPortWidth,screenRatio*viewPortWidth);
     ofRectangle projectionRect = ofRectangle(0, 0, ofGetWidth(), ofGetHeight());
     if( showMapMode )
     {
@@ -183,7 +184,7 @@ ofRectangle ofApp::getCenteredRectForContainer(ofVec2f size, ofRectangle contain
     float scale = fmin(container.width/size.x, container.height/size.y);
     if( fill )
     {
-       scale = fmax(container.width/size.x, container.height/size.y);
+        scale = fmax(container.width/size.x, container.height/size.y);
     }
     ofRectangle scaledRect;
     scaledRect.width = size.x*scale;
