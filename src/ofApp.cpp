@@ -336,6 +336,12 @@ void ofApp::mouseDragged(int x, int y , int button)
         ofVec2f delta = ofVec2f(mouseDelta.x-x,mouseDelta.y-y);
         updatePosition(listener.getPosition().x+delta.x,listener.getPosition().y+delta.y);
     }
+    else
+    {
+        int mappedX = ofMap(x,0,ofGetWidth(),0,mapFbo.getWidth());
+        int mappedY = ofMap(y,0,ofGetHeight(),0,mapFbo.getHeight());
+        listener.setPosition(ofVec2f(mappedX,mappedY));
+    }
     mouseDelta = ofVec2f(x,y);
 }
 
