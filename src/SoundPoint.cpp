@@ -267,13 +267,28 @@ void SoundListener::drawImage()
         ofPushMatrix();
         ofTranslate(getPosition().x,getPosition().y);
        // ofRotateDeg(sin(2*M_PI*0.7*ofGetElapsedTimeMillis()/1000.0));
-        listenerImage.draw(0,0,listenerImage.getWidth(),listenerImage.getHeight());
+        if( shouldMirorImage )
+        {
+            mirroredListenerImage.draw(0,0,listenerImage.getWidth(),listenerImage.getHeight());
+        }
+        else
+        {
+            listenerImage.draw(0,0,listenerImage.getWidth(),listenerImage.getHeight());
+        }
         ofPopMatrix();
     }
 }
 
 void SoundListener::setPosition(ofVec2f aPosition)
 {
+    if( getPosition().x < aPosition.x )
+    {
+        shouldMirorImage = false;
+    }
+    else if( getPosition().x > aPosition.x )
+    {
+        shouldMirorImage = true;
+    }
     ofVec2f meanVec = ofVec2f(0);
     for( float i = 1 ; i < lastPositions.getSize() ; i++ )
     {
@@ -303,7 +318,10 @@ ofVec2f SoundListener::getWalkSpeed()
 void SoundListener::setImage(ofImage anImage, float scale)
 {
     listenerImage = anImage;
+    mirroredListenerImage = anImage;
     listenerScale = scale;
+    mirroredListenerImage.resize(listenerImage.getWidth()*scale, listenerImage.getHeight()*scale);
+    mirroredListenerImage.mirror(false, true);
     listenerImage.resize(listenerImage.getWidth()*scale, listenerImage.getHeight()*scale);
     gotImage = true;
 }

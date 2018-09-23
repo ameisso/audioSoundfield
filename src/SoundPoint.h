@@ -92,9 +92,11 @@ private:
     ofVec2f walkSpeed;
     ofVec2f direction;
     ofImage listenerImage;
+    ofImage mirroredListenerImage;
     float listenerScale;
     RingBuffer lastPositions;
     bool gotImage = false;
+    bool shouldMirorImage = false;
 };
 
 
