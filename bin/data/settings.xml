@@ -1,47 +1,11 @@
 <soundPoints>
-    <soundPoint>
-        <params name="chant.wav" x="165" y="277" maxDistance="150" />
-    </soundPoint>
-    <soundPoint>
-        <params name="eau.wav" x="374" y="94" maxDistance="500" />
-    </soundPoint>
-    <soundPoint>
-        <params name="guard.wav" x="550" y="244" maxDistance="40" triggerable="1" />
-    </soundPoint>
-    <soundPoint>
-        <params name="bateau.wav" x="450" y="244" maxDistance="50" triggerable="0" />
-    </soundPoint>
-    <soundPoint>
-        <params name="des.wav" x="1016" y="538" maxDistance="60" loopRate="5" triggerable="1" />
-    </soundPoint>
-    <soundPoint>
-        <params name="des.wav" x="441" y="756" maxDistance="60" loopRate="5" triggerable="1" />
-    </soundPoint>
-    <soundPoint>
-        <params name="ambiance_bar.wav" x="1016" y="538" maxDistance="200" />
-    </soundPoint>
 </soundPoints>
 <ambiantSounds>
-    <ambiantSound>
-        <params name="ambiance_bar.wav" loopRate="30" volume="0.1"/>
-    </ambiantSound>
 </ambiantSounds>
 <imagePoints>
     <imagePoint>
-        <params name="cube.png" x="150" y="150" scale="1.0"/>
+        <params name="le_train_-1.gif" x="350" y="300" scale="1.0"/>
     </imagePoint>
-    <imagePoint>
-        <params name="fish2.gif" x="450" y="800" triggerable="1" scale="0.5"/>
-    </imagePoint>
-    <imagePoint>
-        <params name="sunset.gif" x="1700" y="310" triggerable="1" scale="1.3"/>
-    </imagePoint>
-<!--    <imagePoint>-->
-<!--        <params name="lego2.jpg" x="2000" y="1500" triggerable="1" scale="0.5"/>-->
-<!--    </imagePoint>-->
-<!--    <imagePoint>-->
-<!--        <params name="cube.png" x="2300" y="550" triggerable="1" scale="0.5"/>-->
-<!--    </imagePoint>-->
 </imagePoints>
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
@@ -55,6 +19,6 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <cursorName>l.png</cursorName>
-    <cursorScale>0.05</cursorScale>
+    <cursorName>listenerSD.png</cursorName>
+    <cursorScale>0.1</cursorScale>
 </IMAGE>
