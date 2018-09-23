@@ -51,7 +51,7 @@ void ofApp::loadSettings()
         {
             settings.pushTag("imagePoint", i);
             ImagePoint point;
-            point.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0),settings.getAttribute("params", "name", ""), settings.getAttribute("params", "triggerable", 0),settings.getAttribute("params", "scale", 1.0));
+            point.setup(settings.getAttribute("params", "x", 0.0), settings.getAttribute("params", "y", 0.0),settings.getAttribute("params", "name", ""),settings.getAttribute("params", "scale", 1.0));
             imagePoints.push_back(point);
             settings.popTag();
         }

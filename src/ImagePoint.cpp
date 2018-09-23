@@ -18,11 +18,10 @@ ofVec2f ImageObject::getPosition()
 
 
 //IMAGE POINT
-void ImagePoint::setup(int posX, int posY, string aPath, bool isTrigerable, float aScale)
+void ImagePoint::setup(int posX, int posY, string aPath, float aScale)
 {
     path = "images/"+aPath;
     ImageObject::setup(posX, posY);
-    trigerable = isTrigerable;
     scale = aScale;
     if( path.find(".gif") != std::string::npos )
     {
