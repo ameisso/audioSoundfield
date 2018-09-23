@@ -251,7 +251,7 @@ void SoundListener::drawCursor()
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
     ofTranslate(getPosition().x,getPosition().y);
-    ofRotate(orientation);
+    ofRotateDeg(orientation);
     ofDrawTriangle(0,0,-5, 20, 5, 20);
     ofPopMatrix();
     ofVec2f orientationVector(0,-30);
@@ -266,7 +266,7 @@ void SoundListener::drawImage()
     {
         ofPushMatrix();
         ofTranslate(getPosition().x,getPosition().y);
-        ofRotateDeg(sin(2*M_PI*0.7*ofGetElapsedTimeMillis()/1000.0));
+       // ofRotateDeg(sin(2*M_PI*0.7*ofGetElapsedTimeMillis()/1000.0));
         listenerImage.draw(0,0,listenerImage.getWidth(),listenerImage.getHeight());
         ofPopMatrix();
     }
