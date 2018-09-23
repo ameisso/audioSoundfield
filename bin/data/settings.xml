@@ -45,8 +45,8 @@
 </imagePoints>
 <PARAMS>
     <listenerSmoothness>10</listenerSmoothness>
-    <viewPortWidth>500</viewPortWidth>
-    <mapsize x="5000" y="10000"/>
+    <viewPortWidth>1000</viewPortWidth>
+    <mapsize x="2000" y="2000"/>
     <listenerOrigin x="300" y="300"/>
 </PARAMS>
 <OSC>
@@ -55,6 +55,6 @@
     <targetPort>3333</targetPort>
 </OSC>
 <IMAGE>
-    <cursorName>listener.png</cursorName>
+    <cursorName>l.png</cursorName>
     <cursorScale>0.05</cursorScale>
 </IMAGE>
