@@ -67,6 +67,7 @@ void ofApp::loadSettings()
         listener.setup(settings.getAttribute("listenerOrigin", "x",350), settings.getAttribute("listenerOrigin", "y", 500), settings.getValue("listenerSmoothness", 0));
         viewPortWidth = settings.getValue("viewPortWidth", 200);
         mapFbo.allocate(settings.getAttribute("mapsize","x", 200),settings.getAttribute("mapsize","y", 200),GL_RGB);
+        mapFbo.getTexture().setTextureWrap(GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
         settings.popTag();
         settings.pushTag("IMAGE");
         string cursorName = "images/"+settings.getValue("cursorName", "");
