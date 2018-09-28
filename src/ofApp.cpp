@@ -127,7 +127,7 @@ void ofApp::draw()
 {
     ofSetColor(255);
     mapFbo.begin();
-    ofBackground(100);
+    ofBackground(255);
     ofSetColor(255);
     ofSetRectMode(OF_RECTMODE_CENTER);
     for(vector<ImagePoint>::iterator it = imagePoints.begin(); it != imagePoints.end(); ++it)
